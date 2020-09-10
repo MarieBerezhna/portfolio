@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <MainMenu :sections="sections" />
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Welcome to Your Vue.js App" style="margin-top: 180px"/>
     
   </div>
 </template>

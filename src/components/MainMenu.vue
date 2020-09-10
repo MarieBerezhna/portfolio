@@ -37,7 +37,7 @@
     .header-right {
         display: flex;
         float: right;
-        margin-right: 10px;
+        margin: 10px;
         justify-content: space-between;
         align-items: center;
         .toggle-icon {
@@ -45,13 +45,13 @@
             width: 24px;
             height: 18px;
             cursor: pointer;
+            top: 25px;
             i {
                 color: #ffffff;
                 position: absolute;
-                top: 25px;
+
                 left: 0;
                 margin-top: -1px;
-                color: #222;
                 width: 100%;
                 height: 2px;
                 background: currentColor;
@@ -86,29 +86,49 @@
         }
     }
 
-    nav {
+    nav {  
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         background-color: rgba(0, 0, 0, 0.9);
-
+        height: 80px;
         ul {
             display: flex;
-            align-items: center;
-            justify-content: flex-end;
+            flex-direction: column;
             list-style: none;
-
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            background-color: inherit;
+            height: calc(100vh - 80px);
             li,
             a {
-                margin: 1% 10px;
+                margin: 5% 10px;
                 float: right;
                 color: #fff;
                 text-decoration: none;
                 font-family: "AvantGarde Bold", Sans-serif;
                 font-weight: 800;
-                width: 100px;
-                min-width: 100px;
+                font-size: 2rem;
+                text-align: center;
+            }
+        }
+    }
+    @media (min-width: 992px) {
+        .header-right {
+            display: none;
+        }
+        nav ul {
+            display: flex;
+            flex-direction: row;
+            height: unset;
+            margin: 30px 0;
+            justify-content: flex-end;
+            list-style: none;
+            li, a {
+                font-size: 1rem;
+                margin: 1% 10px;
             }
         }
     }

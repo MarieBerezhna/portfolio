@@ -33,13 +33,19 @@ export default {
         }
       ]
     }
-  }
+  },
+  // mounted () {
+  //   var $ = require('jquery')
+  //   $(document).on('click', () => {
+  //     console.log('Yayy')
+  //   })
+  // }
 }
 </script>
 
 <style>
 body {
-  background-color: rgb(32, 23, 23);
+  background-color: rgb(12, 13, 13);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

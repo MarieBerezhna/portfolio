@@ -4,10 +4,17 @@
             <a href="/">
                 <img :src="require('../assets/logo.png')" alt="logo" class="logo">
             </a>
-            <div class="header-right">
-                <div class="toggle-icon" data-uk-toggle="target: #navbar-mobile">
+            <div class="header-right closed">
+                <div class="open" data-uk-toggle="target: #navbar-mobile">
                     <i></i>
                 </div>
+                <button class="close" type="button" data-uk-close="ratio: 2;">
+                    <svg width="24" height="18" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"
+                        data-svg="close-icon">
+                        <line fill="none" stroke="#fff" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"></line>
+                        <line fill="none" stroke="#fff" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"></line>
+                    </svg>
+                </button>
             </div>
             <ul>
                 <li v-for="sec in sections" :key="sec.name" class="nav-link">
@@ -22,6 +29,17 @@
         name: 'MainMenu',
         props: {
             sections: Array
+        },
+        mounted () {
+            var $ = require('jquery')    
+            $('.close').on('click', () => {
+                $('nav ul, .close').fadeOut()
+                $('.open').delay(400).fadeIn()
+            })
+            $('.open').on('click', () => {
+                $('nav ul, .close').delay(400).fadeIn()
+                $('.open').fadeOut()
+            })
         }
     }
 </script>
@@ -33,19 +51,27 @@
         position: fixed;
         top: 10px;
         left: 10px;
+        z-index: 10;
     }
+
     .header-right {
         display: flex;
         float: right;
         margin: 10px;
         justify-content: space-between;
         align-items: center;
-        .toggle-icon {
+        .open, .close {
+            position: relative;
+            top: 25px;
+        }
+        .open {
+            display: none;
             position: relative;
             width: 24px;
             height: 18px;
             cursor: pointer;
             top: 25px;
+
             i {
                 color: #ffffff;
                 position: absolute;
@@ -65,7 +91,9 @@
                 background-color: currentcolor;
                 -webkit-transition: all .3s cubic-bezier(.645, .045, .355, 1);
                 transition: all .3s cubic-bezier(.645, .045, .355, 1);
-                &:before, &:after {
+
+                &:before,
+                &:after {
                     box-sizing: inherit;
                     position: absolute;
                     left: 0;
@@ -76,23 +104,31 @@
                     -webkit-transition: width .3s cubic-bezier(.645, .045, .355, 1);
                     transition: width .3s cubic-bezier(.645, .045, .355, 1);
                 }
+
                 &::before {
                     top: 5px;
                 }
+
                 &::after {
                     top: 10px;
                 }
             }
         }
+        .close {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
     }
 
-    nav {  
+    nav {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         background-color: rgba(0, 0, 0, 0.9);
         height: 80px;
+
         ul {
             display: flex;
             flex-direction: column;
@@ -102,6 +138,8 @@
             margin-top: 80px;
             background-color: inherit;
             height: calc(100vh - 80px);
+            padding-left: 0;
+
             li,
             a {
                 margin: 5% 10px;
@@ -115,10 +153,12 @@
             }
         }
     }
+
     @media (min-width: 992px) {
         .header-right {
             display: none;
         }
+
         nav ul {
             display: flex;
             flex-direction: row;
@@ -126,7 +166,9 @@
             margin: 30px 0;
             justify-content: flex-end;
             list-style: none;
-            li, a {
+
+            li,
+            a {
                 font-size: 1rem;
                 margin: 1% 10px;
             }

@@ -37,8 +37,14 @@
                 $('.open').delay(400).fadeIn()
             })
             $('.open').on('click', () => {
-                $('nav ul, .close').delay(400).fadeIn()
-                $('.open').fadeOut()
+                $('.open').hide()
+                $('nav ul, .close').css('display', 'flex')
+                var list = $('nav ul li').toArray()
+                var delay = 0
+                for (var i = 0; i < list.length; i++) {
+                    delay = delay + 400
+                    $(list[i]).delay(delay).css('opacity', 1)
+                }
             })
         }
     }
@@ -65,7 +71,7 @@
             top: 25px;
         }
         .open {
-            display: none;
+        
             position: relative;
             width: 24px;
             height: 18px;
@@ -115,6 +121,7 @@
             }
         }
         .close {
+            display: none;
             background-color: transparent;
             border: none;
             padding: 0;
@@ -130,7 +137,7 @@
         height: 80px;
 
         ul {
-            display: flex;
+            display: none;
             flex-direction: column;
             list-style: none;
             align-items: center;
@@ -139,7 +146,7 @@
             background-color: inherit;
             height: calc(100vh - 80px);
             padding-left: 0;
-
+            li {opacity: 0;}
             li,
             a {
                 margin: 5% 10px;
@@ -166,7 +173,7 @@
             margin: 30px 0;
             justify-content: flex-end;
             list-style: none;
-
+            li { opacity: 1;}
             li,
             a {
                 font-size: 1rem;

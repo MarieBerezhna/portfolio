@@ -33,19 +33,14 @@ export default {
         }
       ]
     }
-  },
-  // mounted () {
-  //   var $ = require('jquery')
-  //   $(document).on('click', () => {
-  //     console.log('Yayy')
-  //   })
-  // }
+  }
 }
 </script>
 
 <style>
 body {
-  background-color: rgb(12, 13, 13);
+  background-color: rgb(12, 13, 13) !important;
+  transition: all ease-in-out 2s;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -53,5 +48,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #aaa;
+}
+section {
+  height: 100vh;
 }
 </style>

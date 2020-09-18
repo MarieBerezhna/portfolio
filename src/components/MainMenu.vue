@@ -51,6 +51,7 @@
 </script>
 
 <style lang="scss" scoped>
+
     .logo {
         width: 200px;
         height: 100px;
@@ -66,12 +67,12 @@
         margin: 10px;
         justify-content: space-between;
         align-items: center;
+
         .open, .close {
             position: relative;
             top: 25px;
         }
         .open {
-        
             position: relative;
             width: 24px;
             height: 18px;
@@ -81,7 +82,6 @@
             i {
                 color: #ffffff;
                 position: absolute;
-
                 left: 0;
                 margin-top: -1px;
                 width: 100%;
@@ -135,7 +135,7 @@
         right: 0;
         background-color: rgba(0, 0, 0, 0.9);
         height: 80px;
-
+        z-index: 10;
         ul {
             display: none;
             flex-direction: column;

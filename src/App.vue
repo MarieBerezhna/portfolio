@@ -43,21 +43,22 @@ export default {
 
 <style lang="scss">
 $green: #5BFFAA;
-:root {
-    overflow: hidden;
-}
+
 html, body {
-  height: 100%;
   overflow: hidden;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 body {
   background-color: rgb(12, 13, 13) !important;
-  transition: all ease-in-out 2s;
   margin: 0;
   overflow-y: scroll;
   max-height: 100vh;
+  -webkit-transition: all ease-in-out 2s;
+  -moz-transition: all ease-in-out 2s;
+  -o-transition: all ease-in-out 2s;
+  transition: all ease-in-out 2s;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -73,5 +74,23 @@ body {
 section {
   height: auto;
   min-height: 100vh;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $green;
+  border-radius: 10px;
+  cursor: pointer;
 }
 </style>

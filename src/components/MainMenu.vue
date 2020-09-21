@@ -25,33 +25,64 @@
 </template>
 
 <script>
+import $ from 'jquery'
     export default {
         name: 'MainMenu',
         props: {
             sections: Array
         },
-        mounted () {
-            var $ = require('jquery')    
-            $('.close').on('click', () => {
-                $('nav ul, .close').fadeOut()
-                $('.open').delay(400).fadeIn()
-            })
-            $('.open').on('click', () => {
-                $('.open').hide()
-                $('nav ul, .close').css('display', 'flex')
-                var list = $('nav ul li').toArray()
-                var delay = 0
-                for (var i = 0; i < list.length; i++) {
-                    delay = delay + 400
-                    $(list[i]).delay(delay).css('opacity', 1)
+        data () {
+            return {
+                scrolled: false
+            }
+        },
+        methods: {
+            menuToggle: function () {
+                $('.close').on('click', () => {
+                    $('nav ul, .close').fadeOut()
+                    $('.open').delay(400).fadeIn()
+                })
+                $('.open').on('click', () => {
+                    $('.open').hide()
+                    $('nav ul, .close').css('display', 'flex')
+                    var list = $('nav ul li').toArray()
+                    var delay = 0
+                    for (var i = 0; i < list.length; i++) {
+                        delay = delay + 400
+                        $(list[i]).delay(delay).css('opacity', 1)
+                    }
+                })
+            },
+            scrollHandler: function (e) {
+                let nav = $('nav')
+                let scrolled = e.target.scrollTop
+
+                if (150 > scrolled && scrolled > 50) { // middle
+                    $(nav).fadeOut()
+                } else if (scrolled > 450) { //large
+                    console.log
+                    $(nav).css({
+                        position: 'fixed'
+                    }).fadeIn('slow')
+                } else { // init
+                    $(nav).css({
+                        position: 'absolute',
+                    }).fadeIn()
                 }
-            })
+            }
+        },
+        mounted () {
+            document.body.addEventListener('scroll', this.scrollHandler)
+            this.menuToggle()
+        }, 
+        destroyed () {
+            document.body.removeEventListener('scroll', this.scrollHandler)
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
+$green: #5BFFAA;
     .logo {
         width: 200px;
         height: 100px;
@@ -132,23 +163,24 @@
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
         background-color: rgba(0, 0, 0, 0.9);
-        height: 80px;
-        z-index: 10;
+        height: auto;
+        min-height: 100px;
+        width: calc(100% - 12px);
+        z-index: 1;
         ul {
             display: none;
             flex-direction: column;
             list-style: none;
             align-items: center;
             justify-content: center;
-            margin-top: 80px;
-            background-color: inherit;
+            padding-bottom: 20px;
             height: calc(100vh - 80px);
             padding-left: 0;
             li {opacity: 0;}
             li,
             a {
+                position: relative;
                 margin: 5% 10px;
                 float: right;
                 color: #fff;
@@ -157,6 +189,26 @@
                 font-weight: 800;
                 font-size: 2rem;
                 text-align: center;
+
+            }
+            a {
+                &:before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    background-color: $green;
+                    width: 0;
+                    height: 2px;
+                    -webkit-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
+                    -o-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
+                    transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
+                }
+                &:hover {
+                    &:before {
+                        width: 100%;
+                    }
+                }
             }
         }
     }
@@ -165,19 +217,21 @@
         .header-right {
             display: none;
         }
-
-        nav ul {
-            display: flex;
-            flex-direction: row;
-            height: unset;
-            margin: 30px 0;
-            justify-content: flex-end;
-            list-style: none;
-            li { opacity: 1;}
-            li,
-            a {
-                font-size: 1rem;
-                margin: 1% 10px;
+        nav {
+            max-height: 120px;
+            ul {
+                display: flex;
+                flex-direction: row;
+                height: unset;
+                padding: 30px 0;
+                justify-content: flex-end;
+                list-style: none;
+                li { opacity: 1;}
+                li,
+                a {
+                    font-size: 1rem;
+                    margin: 1% 10px;
+                }
             }
         }
     }

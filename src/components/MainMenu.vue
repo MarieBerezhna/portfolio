@@ -57,26 +57,25 @@ import $ from 'jquery'
                 let nav = $('nav')
                 let scrolled = e.target.scrollTop
 
-                if (150 > scrolled && scrolled > 50) { // middle
-                    $(nav).fadeOut()
-                } else if (scrolled > 450) { //large
-                    console.log
+                if (150 > scrolled && scrolled > 10) { // middle
+                    $(nav).slideUp(1000)
+                } else if (scrolled > 850) { //large
                     $(nav).css({
                         position: 'fixed'
-                    }).fadeIn('slow')
-                } else { // init
+                    }).slideDown(1000)
+                } else if ( scrolled < 10){ // init
                     $(nav).css({
                         position: 'absolute',
-                    }).fadeIn()
+                    }).slideDown(1000)
                 }
             }
         },
         mounted () {
-            document.body.addEventListener('scroll', this.scrollHandler)
+            // document.body.addEventListener('scroll', this.scrollHandler)
             this.menuToggle()
         }, 
         destroyed () {
-            document.body.removeEventListener('scroll', this.scrollHandler)
+            // document.body.removeEventListener('scroll', this.scrollHandler)
         }
     }
 </script>
@@ -138,8 +137,8 @@ $green: #5BFFAA;
                     height: 100%;
                     background: inherit;
                     content: "";
-                    -webkit-transition: width .3s cubic-bezier(.645, .045, .355, 1);
-                    transition: width .3s cubic-bezier(.645, .045, .355, 1);
+                    // -webkit-transition: width .3s cubic-bezier(.645, .045, .355, 1);
+                    // transition: width .3s cubic-bezier(.645, .045, .355, 1);
                 }
 
                 &::before {
@@ -171,7 +170,6 @@ $green: #5BFFAA;
         ul {
             display: none;
             flex-direction: column;
-            list-style: none;
             align-items: center;
             justify-content: center;
             padding-bottom: 20px;
@@ -218,14 +216,13 @@ $green: #5BFFAA;
             display: none;
         }
         nav {
-            max-height: 120px;
+            max-height: 80px;
             ul {
                 display: flex;
                 flex-direction: row;
                 height: unset;
                 padding: 30px 0;
                 justify-content: flex-end;
-                list-style: none;
                 li { opacity: 1;}
                 li,
                 a {

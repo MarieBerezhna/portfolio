@@ -1,7 +1,7 @@
 <template>
     <div class="btn my-3" 
     :href="href"
-    :style="'background:' + color + '; color: #000; border: 1px solid #000'"
+    :style="'background:#000; color: '+color+'; border: 1px solid '+color+ '; font-size: 1.5rem'"
     @mouseenter="mouseEnter()" @mouseleave="mouseLeave()">
         {{ text }}
     </div>
@@ -19,7 +19,7 @@
         methods: {
             hover () {
                 this.hovering = !this.hovering
-                if (this.hovering) {
+                if (!this.hovering) {
                     event.target.style.background = '#000'
                     event.target.style.border = '1px solid' + this.color
                     event.target.style.color = this.color

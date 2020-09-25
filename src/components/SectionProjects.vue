@@ -1,17 +1,17 @@
 <template>
     <div>
-        <section>
+        <section id="projects">
             <MainHeader text="Projects" />
         </section>
     </div>
 </template>
 
 <script>
-import MainHeader from '@/components/utils/MainHeader.vue'
+
     export default {
         name: 'SeactionProjects',
         components: {
-            MainHeader
+            MainHeader: () => import('@/components/utils/MainHeader.vue')
         }
     }
 </script>

@@ -56,7 +56,23 @@
 
 <style lang="scss">
   $green: #5BFFAA;
+  @keyframes slidein {
+    from {
+      margin-top: -50vh;
+      margin-left: 100%;
+      width: 300%;
+    }
 
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+  .main-header {
+    animation-name: slidein;
+    animation-duration: 3s;
+
+  }
   .hideme {
     opacity: 0;
   }

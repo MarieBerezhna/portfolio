@@ -18,7 +18,9 @@
             </div>
             <ul>
                 <li v-for="sec in sections" :key="sec.name" class="nav-link">
-                    <a :href="'#' + sec.name.toLowerCase()">{{ sec.name.toUpperCase() }}</a></li>
+                    <a @click="menuClick($event)" 
+                    :href="'#' + sec.name.toLowerCase()">{{ sec.name.toUpperCase() }}</a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -53,29 +55,21 @@ import $ from 'jquery'
                     }
                 })
             },
-            scrollHandler: function (e) {
-                let nav = $('nav')
-                let scrolled = e.target.scrollTop
+            menuClick: function (e) {
+            var hash = e.target.hash;
 
-                if (150 > scrolled && scrolled > 10) { // middle
-                    $(nav).slideUp(1000)
-                } else if (scrolled > 850) { //large
-                    $(nav).css({
-                        position: 'fixed'
-                    }).slideDown(1000)
-                } else if ( scrolled < 10){ // init
-                    $(nav).css({
-                        position: 'absolute',
-                    }).slideDown(1000)
-                }
+            var v = $(hash).offset().top - $(window).scrollTop()
+            console.log(v)
+
+			$('html, body').animate({
+				scrollTop: v
+			}, 1000);
+
+			return false;
             }
         },
         mounted () {
-            // document.body.addEventListener('scroll', this.scrollHandler)
             this.menuToggle()
-        }, 
-        destroyed () {
-            // document.body.removeEventListener('scroll', this.scrollHandler)
         }
     }
 </script>

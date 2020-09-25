@@ -11,7 +11,7 @@
           
           <h1>Hello! <br> I'm <span :style="'color:' + color">Marie</span>,</h1>
           <p>Front End Developer</p>
-          <MainButton text="Get In Touch" :color="color" />
+          <MainButton text="Get In Touch" />
         </div>
       </div>
       <div class="container-fluid  d-flex justify-content-end">

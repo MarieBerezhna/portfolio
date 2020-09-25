@@ -89,7 +89,33 @@ export default new Vuex.Store({
           icon: ''
         }
       ]
-    }
+    },
+    projects: [
+      {
+        id: 0,
+        name: 'Tomatick',
+        url: 'https://tomatick.webmarie.com',
+        img: 'tomatick.jpg',
+        description: 'Pomodoro clock',
+        tags: []
+      },
+      {
+        id: 1,
+        name: 'Polina Poliakova',
+        url: 'https://polinapoliakova.com',
+        img: 'polina.jpg',
+        description: 'Digital Artist Intro',
+        tags: []
+      },
+      {
+        id: 2,
+        name: 'Wheel Of Fortune',
+        url: 'https://wheel.webmarie.com',
+        img: 'wheel.jpg',
+        description: 'Spinner game with HTML5 Canvas',
+        tags: []
+      }
+    ]
   },
   mutations: {},
   actions: {}

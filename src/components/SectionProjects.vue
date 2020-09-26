@@ -1,8 +1,8 @@
 <template>
     <div>
-        <section id="projects">
+        <section id="projects" class="py-3">
             <MainHeader text="Projects" />
-            <div class="container-fluid my-5">
+            <div class="container-fluid mt-3 mb-5">
                 <div class="row">
                     <div class="col-md-4 project"
                         :style="'background-image: url(' + require('../assets/projects/' + project.img)"

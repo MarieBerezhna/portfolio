@@ -160,7 +160,7 @@ $green: #5BFFAA;
         height: auto;
         min-height: 100px;
         width: calc(100% - 12px);
-        z-index: 1;
+        z-index: 11;
         ul {
             display: none;
             flex-direction: column;

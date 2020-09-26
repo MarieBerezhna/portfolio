@@ -92,6 +92,7 @@
   section {
     height: auto;
     min-height: 80vh;
+    position: relative;
   }
 
   /* width */

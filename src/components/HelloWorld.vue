@@ -2,13 +2,13 @@
   <div class="hello">
     <section id="home">
       <div class="row position-relative">
-        <ParticlesBall v-if="window.outerWidth > 992" class="col-6 offset-6 position-absolute "/>
-              
+        <ParticlesBall v-if="window.outerWidth > 992" class="col-6 offset-6 position-absolute " />
+
         <div class="col-12 col-md-6" id="profile-image">
 
         </div>
         <div class="col-12 col-md-6 text-left my-md-auto greet position-absolute">
-          
+
           <h1>Hello! <br> I'm <span :style="'color:' + color">Marie</span>,</h1>
           <p>Front End Developer</p>
           <MainButton text="Get In Touch" />
@@ -35,7 +35,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'HelloWorld',
     components: {
@@ -47,7 +46,7 @@
     },
     data() {
       return {
-        
+
       }
     },
     methods: {
@@ -62,7 +61,7 @@
         }
       }
     },
-    created () {
+    created() {
       this.window = window
     },
     mounted() {
@@ -75,7 +74,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
   #profile-image {
     height: 100vh;
     min-height: 500px;
@@ -113,6 +111,25 @@
     .highlighted {
       color: #3B3B3B;
     }
+
+    &:last-child .infobox {
+      &:hover {
+        box-shadow: 0px 10px 50px 10px rgba(0,0,0,0.3);
+      }
+
+      &::before {
+
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        right: -15px;
+        width: 80%;
+        height: 40%;
+        background-color: #5BFFAA;
+        ;
+        z-index: -1;
+      }
+    }
   }
 
   @media (min-width: 992px) {
@@ -121,7 +138,7 @@
     }
 
     .greet {
-     left: 55vw;
+      left: 55vw;
 
     }
 

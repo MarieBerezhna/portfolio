@@ -2,9 +2,9 @@
     <div>
         <section id="projects">
             <MainHeader text="Projects" />
-            <div class="container-fluid">
+            <div class="container-fluid my-5">
                 <div class="row">
-                    <div class="col-4 project"
+                    <div class="col-md-4 project"
                         :style="'background-image: url(' + require('../assets/projects/' + project.img)"
                         v-for="project in this.$store.state.projects" :key="project.id">
                         <div class="cover position-relative text-center">

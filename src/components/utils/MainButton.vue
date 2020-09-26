@@ -50,11 +50,11 @@ $green: #5BFFAA;
                 &:before {
                     content: '';
                     position: absolute;
-                    bottom: 0;
-                    left: 0;
+                    bottom: -1%;
+                    left: -1%;
                     background-color: $green;
                     width: 0;
-                    height: 100%;
+                    height: 105%;
                     -webkit-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
                     -o-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
                     transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
@@ -62,7 +62,7 @@ $green: #5BFFAA;
                 &:hover {
                     color: #000 !important;
                     &:before {
-                        width: 100%;
+                        width: 102%;
                             z-index: -1;
                     }
                 }

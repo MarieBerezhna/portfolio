@@ -4,7 +4,10 @@
             <div class="row">
                                 <div class="col-md-6 col-12 order-md-2">
                     <ul >
-                        <li v-for="link in links" :key="link.id" :code='link.code'> {{ link.name }} </li>
+                        <li v-for="link in links" :key="link.id">
+                            <MenuLink  :name="link.name"/>
+                        </li>
+ 
                     </ul>
                 </div>
                 <div class="col-md-6 col-12 order-md-0">
@@ -20,6 +23,9 @@
 // import $ from 'jquery'
     export default {
         name: 'MainFooter',
+        components: {
+            MenuLink: () => import('@/components/utils/MenuLink.vue')
+        },
         data () {
             return {
                 links: [

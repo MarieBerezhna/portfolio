@@ -18,8 +18,7 @@
             </div>
             <ul>
                 <li v-for="sec in sections" :key="sec.name" class="nav-link">
-                    <a @click="menuClick($event)" 
-                    :href="'#' + sec.name.toLowerCase()">{{ sec.name.toUpperCase() }}</a>
+                    <MenuLink  :name="sec.name.toUpperCase()" :href="'#' + sec.name.toLowerCase()"  @click="menuClick($event)" />
                 </li>
             </ul>
         </nav>
@@ -30,6 +29,9 @@
 import $ from 'jquery'
     export default {
         name: 'MainMenu',
+        components: {
+            MenuLink: () => import('@/components/utils/MenuLink.vue')
+        },
         props: {
             sections: Array
         },
@@ -167,39 +169,6 @@ $green: #5BFFAA;
             padding-bottom: 20px;
             height: calc(100vh - 80px);
             padding-left: 0;
-            li {opacity: 0;}
-            li,
-            a {
-                position: relative;
-                margin: 5% 10px;
-                float: right;
-                color: #fff;
-                text-decoration: none;
-                font-family: "AvantGarde Bold", Sans-serif;
-                font-weight: 800;
-                font-size: 2rem;
-                text-align: center;
-
-            }
-            a {
-                &:before {
-                    content: '';
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    background-color: $green;
-                    width: 0;
-                    height: 2px;
-                    -webkit-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
-                    -o-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
-                    transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
-                }
-                &:hover {
-                    &:before {
-                        width: 100%;
-                    }
-                }
-            }
         }
     }
 

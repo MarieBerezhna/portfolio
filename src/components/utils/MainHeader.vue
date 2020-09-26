@@ -1,6 +1,6 @@
 <template>
-    <div class="row main-header">
-        <div class="wrapper mx-auto text-center col-10 col-md-3 mb-5" :style="'background-color:' + this.$store.state.color">
+    <div class="row main-header py-5">
+        <div class="wrapper mx-auto text-center col-10 col-md-3" :style="'background-color:' + this.$store.state.color">
 
         <h2 class="display-4"> {{ text }} </h2>
     </div>

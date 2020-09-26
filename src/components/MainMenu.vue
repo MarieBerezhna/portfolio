@@ -187,7 +187,7 @@ $green: #5BFFAA;
                 li { opacity: 1;}
                 li,
                 a {
-                    font-size: 1rem;
+                    font-size: 2rem;
                     margin: 1% 10px;
                 }
             }

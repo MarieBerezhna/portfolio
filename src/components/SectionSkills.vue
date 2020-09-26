@@ -22,6 +22,7 @@
 </template>
 
 <script>
+  import $ from 'jquery'
     import MainHeader from '@/components/utils/MainHeader.vue'
     export default {
         name: 'SeactionSkills',
@@ -32,44 +33,49 @@
         created() {
             this.window = window
         },
-        mounted() {
-            //  document.getElementsByClassName('bouncingball')[0].style.backgroundColor = this.$store.state.color;
-        }
+    methods: {
+      showOnScroll() {
+        /* Check the location of each desired element */
+        $('.hideme').each(function () {
+          var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+          var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+          /* If the object is completely visible in the window, fade it in */
+          if (bottom_of_window > bottom_of_object) {
+            $(this).css({
+              opacity: 1,
+              height: 'unset'
+            })
+          }
+
+        });
+      }
+    },
+    mounted() {
+      document.body.addEventListener('scroll', this.showOnScroll)
+    },
+    destroyed() {
+      document.body.removeEventListener('scroll', this.showOnScroll)
+    }
     }
 </script>
 
 <style lang="scss" scoped>
+  .hideme {
+    opacity: 0;
+    height: 0;
+  }
     .container {
         display: flex;
         flex-direction: column;
-
-        .skill {
-            -webkit-animation-name: bounceInDown;
-            animation-name: bounceInDown;
-        }
-
         h4 {
             font-family: "AvantGarde Bold", Sans-serif;
             font-weight: 800;
         }
-
         img {
             width: 30px;
             z-index: 1;
         }
-    }
-
-    .bouncingball {
-        width: 14px;
-        height: 14px;
-        border-radius: 100%;
-        animation: bounce 3s;
-        transform: translateY(0px);
-        animation-iteration-count: infinite;
-        animation-delay: 2s;
-        position: absolute;
-        margin: 50px;
-        z-index: 0;
     }
 
     @media (min-width: 992px) {

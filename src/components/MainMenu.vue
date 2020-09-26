@@ -131,8 +131,6 @@ $green: #5BFFAA;
                     height: 100%;
                     background: inherit;
                     content: "";
-                    // -webkit-transition: width .3s cubic-bezier(.645, .045, .355, 1);
-                    // transition: width .3s cubic-bezier(.645, .045, .355, 1);
                 }
 
                 &::before {

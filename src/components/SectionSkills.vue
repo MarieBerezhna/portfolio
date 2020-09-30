@@ -1,8 +1,8 @@
 <template>
     <div>
         <section id="skills">
-            <MainHeader text="Skills" />
-            <ParticlesBall v-if="window.outerWidth < 992"/>
+            <MainHeading text="Skills" />
+            <ParticlesBall v-if="window.outerWidth < 992" style="height: 40vh"/>
 
             <div class="container mt-3 mb-5 text-center position-relative">
                 <div class="row py-4 skillset mx-auto" v-for="(skillset, key) in this.$store.state.skills" :key="key">
@@ -23,11 +23,10 @@
 
 <script>
   import $ from 'jquery'
-    import MainHeader from '@/components/utils/MainHeader.vue'
     export default {
         name: 'SeactionSkills',
         components: {
-            MainHeader,
+            MainHeading: () => import('@/components/utils/MainHeading.vue'),
             ParticlesBall: () => import('@/components/art/ParticlesBall.vue')
         },
         created() {

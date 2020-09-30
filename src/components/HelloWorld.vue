@@ -84,8 +84,9 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   #profile-image {
+    padding-left: 0;
     height: 100vh;
-    min-height: 500px;
+    // min-height: 500px;
     width: 100%;
     background-image: url(../assets/grey.jpg);
     background-size: 120%;
@@ -137,10 +138,11 @@
   @media (min-width: 992px) {
     #profile-image {
       background-size: 90%;
+    background-position: left;
     }
 
     .greet {
-      left: 55vw;
+      left: 45vw;
 
     }
 

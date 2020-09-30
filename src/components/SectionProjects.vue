@@ -1,7 +1,7 @@
 <template>
     <div>
         <section id="projects" class="py-3">
-            <MainHeader text="Projects" />
+            <MainHeading text="Projects" />
             <div class="container-fluid mt-3 mb-5">
                 <div class="row">
                     <div class="col-md-4 project"
@@ -26,7 +26,7 @@
     export default {
         name: 'SeactionProjects',
         components: {
-            MainHeader: () => import('@/components/utils/MainHeader.vue'),
+            MainHeading: () => import('@/components/utils/MainHeading.vue'),
             MainButton: () => import('@/components/utils/MainButton.vue')
         },
         data() {

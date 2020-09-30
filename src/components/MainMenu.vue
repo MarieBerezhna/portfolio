@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav>
+        <nav :style="'border-bottom: 1px solid '+ this.$store.state.secondary_color">
             <a href="/">
                 <img :src="require('../assets/logo.png')" alt="logo" class="logo">
             </a>
@@ -77,12 +77,11 @@ import $ from 'jquery'
 </script>
 
 <style lang="scss" scoped>
-$green: #5BFFAA;
     .logo {
         width: 200px;
         height: 100px;
         position: fixed;
-        top: 10px;
+        top: 0px;
         left: 10px;
         z-index: 10;
     }
@@ -157,8 +156,7 @@ $green: #5BFFAA;
         top: 0;
         left: 0;
         background-color: rgba(0, 0, 0, 0.9);
-        height: auto;
-        min-height: 100px;
+        height: 80px;
         width: calc(100% - 12px);
         z-index: 11;
         ul {
@@ -182,7 +180,7 @@ $green: #5BFFAA;
                 display: flex;
                 flex-direction: row;
                 height: unset;
-                padding: 30px 0;
+                padding-right: 50px;
                 justify-content: flex-end;
                 li { opacity: 1;}
                 li,

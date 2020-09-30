@@ -12,7 +12,6 @@
 </template>
 
 <script>
-
   import MainMenu from './components/MainMenu.vue'
   import HelloWorld from './components/HelloWorld.vue'
   export default {
@@ -35,6 +34,7 @@
 
 <style lang="scss">
   $green: #5BFFAA;
+
   @keyframes slidein {
     from {
       margin-top: -50vh;
@@ -46,11 +46,6 @@
       margin-left: 0%;
       width: 100%;
     }
-  }
-  .main-header {
-    animation-name: slidein;
-    animation-duration: 3s;
-
   }
 
   * {
@@ -97,6 +92,48 @@
     position: relative;
   }
 
+  .main-header {
+    animation-name: slidein;
+    animation-duration: 3s;
+
+  }
+
+  a.main-btn {
+    border: 2px solid $green;
+  }
+
+  a.main-btn::before {
+    background-color: $green
+  }
+
+  a.main-btn {
+    position: relative;
+    color: #fff;
+
+    z-index: 2;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: -1%;
+      left: 0%;
+      width: 0;
+      height: 105%;
+      -webkit-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
+      -o-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
+      transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
+    }
+
+    &:hover {
+
+
+      &:before {
+        width: 100%;
+        z-index: -1;
+      }
+    }
+  }
+
   /* width */
   ::-webkit-scrollbar {
     width: 10px;
@@ -126,6 +163,9 @@
   @media (min-width: 992px) {
     section {
       margin-top: 5vh;
+    }
+    section:first-child {
+      margin-top: 0;
     }
   }
 </style>

@@ -22,7 +22,7 @@
 
     .particles {
         overflow: hidden; // no scrollbars.. 
-        height: 500px;
+        height: 80%;
         width: 100%;
         position: relative;
         transform-style: preserve-3d;

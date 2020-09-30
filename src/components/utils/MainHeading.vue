@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        name: 'MAinHeader',
+        name: 'MainHeading',
         props: {text: String }
     }
 </script>

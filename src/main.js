@@ -6,9 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Vuex from 'vuex';
 import store from './store';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faFontAwesome } from '@fortawesome/free-brands-svg-icons';
+import { faFontAwesome, faFacebookF, faLinkedinIn, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faFontAwesome);
+library.add(faFontAwesome, faFacebookF, faLinkedinIn, faWhatsapp );
+
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.use(Vuex);

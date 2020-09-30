@@ -115,10 +115,12 @@
     &:before {
       content: '';
       position: absolute;
-      bottom: -1%;
-      left: 0%;
+          top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
       width: 0;
-      height: 105%;
+      height: calc(100% - 2px);
       -webkit-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
       -o-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
       transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
@@ -128,7 +130,7 @@
 
 
       &:before {
-        width: 100%;
+        width: calc(100% - 2px);
         z-index: -1;
       }
     }

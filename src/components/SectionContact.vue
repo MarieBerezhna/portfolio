@@ -28,7 +28,9 @@
                 </div>
                 <div class="col-12 col-md-6 mx-auto my-auto" >
                     <div class="row">
-                    <span class="icon-wrap position-relative" :style="'border: 1px solid '+ $store.state.primary_color" 
+                    <span class="icon-wrap mx-auto position-relative" 
+                    @mouseenter="iconHover($event)" @mouseleave="iconHover($event)"
+                    :style="'border: 1px solid '+ $store.state.primary_color" 
                     v-for="(icon, index) in icons" :key="index" :index="index">
                         <font-awesome-icon :icon="['fab', icon]" class="mx-auto my-auto" />
                     </span>
@@ -59,6 +61,12 @@
                 if (e.which == 13 && rows < 5) {
                     $(e.target).attr('rows', rows + 1)
                 }
+            },
+            iconHover (e) {
+                $(e.target).css({
+                    'margin-top': e.type=== 'mouseenter'? '-10px': 'unset',
+                    color: e.type=== 'mouseenter'? this.$store.state.primary_color : '#fff'
+                })
             }
         },
         mounted() {
@@ -101,5 +109,9 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
+    -webkit-transition: all ease-in 0.2s;
+    -moz-transition: all ease-in 0.2s;
+    -o-transition: all ease-in 0.2s;
+    transition: all ease-in 0.2s;
     }
 </style>

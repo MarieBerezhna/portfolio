@@ -12,7 +12,7 @@
         </div>
         <div class="col-12 col-md-6 text-left my-md-auto greet position-absolute">
 
-          <h1>Hello! <br> I'm <span :style="'color:' + color">Marie</span>,</h1>
+          <h1>Hello! <br> I'm <span :style="'color:' + $store.state.primary_color">Marie</span>,</h1>
           <p>Front End Developer</p>
           <MainButton text="Get In Touch" />
         </div>
@@ -22,7 +22,7 @@
 
           <div v-for="box in this.$store.state.boxes" :key="box.id" class="infobox-outer col-12 col-md-4 my-5 my-md-1">
             <div class="infobox text-center mb-5" @mouseenter="boxHover" @mouseleave="boxHover"
-              :class="{highlighted: box.highlighted}" :style="[box.highlighted ? 'color: ' + color: '']">
+              :class="{highlighted: box.highlighted}" >
               <div class="img mx-auto">
                 <img class="img w-25 my-3 my-md-4" :src="require('../assets/png/' + box.icon)" :alt="box.title">
               </div>
@@ -46,17 +46,18 @@
     },
     data () {
       return {
-        color: this.$store.state.primary_color
+        // color: this.$store.state.primary_color
       }
     },
     methods: {
       boxHover(e) {
         e.stopPropagation()
         let primary = this.$store.state.primary_color
+        let secondary = this.$store.state.secondary_color
         let item = e.target
         if (!item.classList.contains('highlighted')) {
-          item.style.backgroundColor = e.type === 'mouseenter' ? primary : "#3B3B3B"
-          item.style.color = e.type === 'mouseenter' ? "#3B3B3B" : '#fff'
+          item.style.backgroundColor = e.type === 'mouseenter' ? primary : secondary
+          item.style.color = e.type === 'mouseenter' ? secondary : '#fff'
           item.getElementsByTagName('hr')[0].style.visibility = e.type === 'mouseenter' ? "visible" : "hidden"
         }
       }
@@ -66,7 +67,8 @@
     },
     mounted() {
       let greenBox = document.getElementsByClassName('highlighted')[0];
-      greenBox.style.backgroundColor = this.color
+      greenBox.style.backgroundColor = this.$store.state.primary_color
+      greenBox.style.color =this.$store.state.secondary_color
       greenBox.getElementsByTagName('hr')[0].style.visibility = "visible"
 
       let colorCss = `

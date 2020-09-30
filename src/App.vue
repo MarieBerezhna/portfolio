@@ -4,6 +4,7 @@
     <HelloWorld :color="color" />
     <SectionSkills />
     <SectionProjects />
+    <SectionContact />
     <MainFooter />
     <!-- <div>Icons made by <a href="https://www.flaticon.local/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.local/" title="Flaticon">www.flaticon.local</a></div> -->
   </div>
@@ -21,6 +22,7 @@
       HelloWorld,
       SectionSkills: () => import('./components/SectionSkills.vue'),
       SectionProjects: () => import('./components/SectionProjects.vue'),
+      SectionContact: () => import('./components/SectionContact.vue'),
       MainFooter: () => import('./components/MainFooter.vue')
     },
     data() {

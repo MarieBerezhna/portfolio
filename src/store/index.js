@@ -4,7 +4,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    color: '#5BFFAA',
+    primary_color: '#5BFFAA',
+    secondary_color: '#3B3B3B',
     sections: [{
         name: 'Home'
       },

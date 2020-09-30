@@ -1,6 +1,6 @@
 <template>
     <div class="row main-header py-5">
-        <div class="wrapper mx-auto text-center col-10 col-md-3" :style="'background-color:' + this.$store.state.color">
+        <div class="wrapper mx-auto text-center col-10 col-md-3" :style="'background-color:' + this.$store.state.primary_color">
 
         <h2 class="display-4"> {{ text }} </h2>
     </div>
@@ -10,7 +10,7 @@
 <script>
     export default {
         name: 'MAinHeader',
-        props: {text: String, color: String}
+        props: {text: String }
     }
 </script>
 

@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
     <section id="home">
+      <div id="homestyle">
+
+      </div>
       <div class="row position-relative">
         <ParticlesBall v-if="window.outerWidth > 992" class="col-6 offset-6 position-absolute " />
 
@@ -19,7 +22,7 @@
 
           <div v-for="box in this.$store.state.boxes" :key="box.id" class="infobox-outer col-12 col-md-4 my-5 my-md-1">
             <div class="infobox text-center mb-5" @mouseenter="boxHover" @mouseleave="boxHover"
-              :class="{highlighted: box.highlighted}">
+              :class="{highlighted: box.highlighted}" :style="[box.highlighted ? 'color: ' + color: '']">
               <div class="img mx-auto">
                 <img class="img w-25 my-3 my-md-4" :src="require('../assets/png/' + box.icon)" :alt="box.title">
               </div>
@@ -41,22 +44,19 @@
       MainButton: () => import('@/components/utils/MainButton.vue'),
       ParticlesBall: () => import('@/components/art/ParticlesBall.vue')
     },
-    props: {
-      color: String
-    },
-    data() {
+    data () {
       return {
-
+        color: this.$store.state.primary_color
       }
     },
     methods: {
       boxHover(e) {
         e.stopPropagation()
-        let primary = this.color
+        let primary = this.$store.state.primary_color
         let item = e.target
         if (!item.classList.contains('highlighted')) {
           item.style.backgroundColor = e.type === 'mouseenter' ? primary : "#3B3B3B"
-          item.style.color = e.type === 'mouseenter' ? '#000' : '#fff'
+          item.style.color = e.type === 'mouseenter' ? "#3B3B3B" : '#fff'
           item.getElementsByTagName('hr')[0].style.visibility = e.type === 'mouseenter' ? "visible" : "hidden"
         }
       }
@@ -68,6 +68,15 @@
       let greenBox = document.getElementsByClassName('highlighted')[0];
       greenBox.style.backgroundColor = this.color
       greenBox.getElementsByTagName('hr')[0].style.visibility = "visible"
+
+      let colorCss = `
+      <style>
+.infobox-outer:last-child .infobox::before {
+    background-color: ` + this.color + `;
+}
+</style>
+      `
+      document.getElementById('homestyle').innerHTML = colorCss
     }
   }
 </script>
@@ -108,25 +117,18 @@
       }
     }
 
-    .highlighted {
-      color: #3B3B3B;
-    }
-
     &:last-child .infobox {
       &:hover {
         box-shadow: 0px 10px 50px 10px rgba(0,0,0,0.3);
       }
 
       &::before {
-
         content: '';
         position: absolute;
         bottom: -15px;
         right: -15px;
         width: 80%;
         height: 40%;
-        background-color: #5BFFAA;
-        ;
         z-index: -1;
       }
     }

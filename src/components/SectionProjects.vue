@@ -49,11 +49,21 @@
         background-size: 100%;
         background-position: center;
         background-repeat: no-repeat;
-        transition: background-size 2s ease-in;
-        -moz-transition: background-size 2s ease-in;
-        -ms-transition: background-size 2s ease-in;
-        -o-transition: background-size 2s ease-in;
-        -webkit-transition: background-size 2s ease-in;
+        transition: all 2s ease-in;
+        -moz-transition: all 2s ease-in;
+        -ms-transition: all 2s ease-in;
+        -o-transition: all 2s ease-in;
+        -webkit-transition: all 2s ease-in;
+
+        .cover,
+        .content,
+        h5 {
+            transition: all 0.5s ease-in;
+            -moz-transition: all 0.5s ease-in;
+            -ms-transition: all 0.5s ease-in;
+            -o-transition: all 0.5s ease-in;
+            -webkit-transition: all 0.5s ease-in;
+        }
 
         &:hover {
             background-size: 120%;

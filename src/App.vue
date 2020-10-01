@@ -48,13 +48,6 @@
     }
   }
 
-  * {
-    -webkit-transition: all ease-in-out 0.5s;
-    -moz-transition: all ease-in-out 0.5s;
-    -o-transition: all ease-in-out 0.5s;
-    transition: all ease-in-out 0.5s;
-  }
-
   html,
   body {
     overflow: hidden;
@@ -68,10 +61,13 @@
     margin: 0;
     overflow-y: scroll;
     max-height: 100vh;
-    -webkit-transition: all ease-in-out 2s;
-    -moz-transition: all ease-in-out 2s;
-    -o-transition: all ease-in-out 2s;
-    transition: all ease-in-out 2s;
+    * {
+    -webkit-transition: all ease-in-out 0.5s;
+    -moz-transition: all ease-in-out 0.5s;
+    -ms-transition: all ease-in-out 0.5s;
+    -o-transition: all ease-in-out 0.5s;
+    transition: all ease-in-out 0.5s;
+    }
   }
 
   #app {
@@ -79,6 +75,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #ccc;
+
   }
 
   .row {
@@ -92,50 +89,6 @@
     position: relative;
   }
 
-  .main-header {
-    animation-name: slidein;
-    animation-duration: 3s;
-
-  }
-
-  a.main-btn {
-    border: 2px solid $green;
-  }
-
-  a.main-btn::before {
-    background-color: $green
-  }
-
-  a.main-btn {
-    position: relative;
-    color: #fff;
-
-    z-index: 2;
-
-    &:before {
-      content: '';
-      position: absolute;
-          top: 1px;
-    left: 1px;
-    right: 1px;
-    bottom: 1px;
-      width: 0;
-      height: calc(100% - 2px);
-      -webkit-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
-      -o-transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
-      transition: 700ms cubic-bezier(0.17, 0.67, 0, 1.01);
-    }
-
-    &:hover {
-
-
-      &:before {
-        width: calc(100% - 2px);
-        z-index: -1;
-      }
-    }
-  }
-
   /* width */
   ::-webkit-scrollbar {
     width: 10px;
@@ -143,31 +96,27 @@
 
   ul {
     list-style: none;
-
     li {
       cursor: pointer;
     }
   }
-
+  a.main-btn::before {
+    background-color: $green
+  }
   /* Track */
   ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: $green;
-    border-radius: 10px;
     cursor: pointer;
   }
 
   @media (min-width: 992px) {
-    section {
+    section:not(:first-child) {
       margin-top: 5vh;
-    }
-    section:first-child {
-      margin-top: 0;
     }
   }
 </style>

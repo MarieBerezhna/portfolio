@@ -52,7 +52,7 @@
         },
         data() {
             return {
-                icons: ['facebook-f', 'linkedin-in', 'whatsapp', 'facebook-f', 'linkedin-in']
+                icons: ['facebook-f', 'linkedin-in', 'whatsapp', 'instagram', 'github']
             }
         },
         methods: {
@@ -63,8 +63,9 @@
                 }
             },
             iconHover (e) {
+                let value =  e.type === 'mouseenter'? '-10px': 0
                 $(e.target).css({
-                    'margin-top': e.type=== 'mouseenter'? '-10px': 'unset',
+                    transform: 'translateY(' + value + ')',
                     color: e.type=== 'mouseenter'? this.$store.state.primary_color : '#fff'
                 })
             }

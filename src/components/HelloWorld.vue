@@ -44,11 +44,6 @@
       MainButton: () => import('@/components/utils/MainButton.vue'),
       ParticlesBall: () => import('@/components/art/ParticlesBall.vue')
     },
-    data () {
-      return {
-        // color: this.$store.state.primary_color
-      }
-    },
     methods: {
       boxHover(e) {
         e.stopPropagation()

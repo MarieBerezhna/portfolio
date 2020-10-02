@@ -21,23 +21,34 @@ export default new Vuex.Store({
     ],
     boxes: [{
         id: 0,
-        title: 'Responsive Web Design',
+        title: 'Creative Mindset',
         icon: 'web-design.png',
-        content: 'Responsive web design is an approach to web design that makes web pages render well on a variety of devices and window or screen sizes.',
+        content: `2+ years of experience in web development with a strong focus on front-end web applications,
+          striving for responsive websites and user-friendly interfaces.
+          Trying out different styles and creating my own, 
+          as a naturally wondering creature, I like to play with things and see what happens.`,
         highlighted: true
       },
       {
         id: 1,
-        title: 'Mobile-first development',
+        title: 'Forever Student',
         icon: '003-analytics.png',
-        content: 'A “mobile-first” approach involves designing a desktop site starting with the mobile version, which is then adapted to larger screens.'
-
+        content: `Passionate about solving challenging problems, 
+        gaining knowledge and mastering  skills as technological tendencies evolve. 
+        Exploring new things is an essential need for a healthy human consciousness, if you ask me.
+        Shortly speaking, Google and Stackoverflow are my besties ;)
+        `
       },
       {
         id: 2,
-        title: 'Search Engine Optimization',
+        title: 'Team Player',
         icon: '001-analytics.png',
-        content: 'Search engine optimization is the process of growing the quality and quantity of website traffic by increasing the visibility of a website or a web page to users of a web search engine.'
+        content: `Communication skills are vital nowadays.
+        While most of my jobs are freelance projects, 
+        I did work in a startup team for a while, and will gladly do it again.
+        This experience taught me that we can achieve much more than we think, 
+        when we know how to communicate clearly.
+        `
       }
     ],
     skills: {
@@ -114,16 +125,22 @@ export default new Vuex.Store({
         tags: []
       }
     ],
-    footerlinks: [{
-        id: 0,
-        name: 'Terms of use & Privacy',
-        code: 'tos'
-      },
-      {
-        id: 1,
-        name: 'Web Hosting',
-        code: 'credits'
-      }
+    footerlinks: [
+        { 
+          id: 0, 
+          name: 'Terms of use & Privacy', 
+          code: 'tos',
+          content: `The only information I collect on this webpage is your name, 
+          phone number and email, when you make an enquiery with a contact form. 
+          The only use of that information for me is to get back to you with answers, 
+          I don't pass it to any third parties.`
+        },
+        {
+          id: 1, 
+          name: 'Credits', 
+          code: 'credits',
+          content: 'credits'
+        }
     ]
   },
   mutations: {},

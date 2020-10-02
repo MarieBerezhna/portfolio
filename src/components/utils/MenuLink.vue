@@ -1,7 +1,5 @@
 <template>
-    <div>
         <a :href="url"> {{ name }} </a>
-    </div>
 </template>
 
 <script>

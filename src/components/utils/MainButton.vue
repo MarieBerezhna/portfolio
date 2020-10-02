@@ -1,7 +1,7 @@
-<template>
-    <a class="btn my-3 main-btn" :href="href? href : '#'" target="_blank"
+<template >
+    <a class="btn my-3 main-btn" :href="href? href : '#'"
     @mouseenter="hover($event)"
-        @mouseleave="hover($event)"
+    @mouseleave="hover($event)"
      >
         {{ text }}
     </a>
@@ -11,7 +11,10 @@
 import $ from 'jquery'
     export default {
         name: 'MainButton',
-        props: ['text', 'href'],
+        props: {
+          text: String, 
+          href: String
+          },
         data() {
             return {
                 color: this.$store.state.primary_color

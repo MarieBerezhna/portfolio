@@ -96,6 +96,7 @@
 
   ul {
     list-style: none;
+    padding-left: 0;
     li {
       cursor: pointer;
     }

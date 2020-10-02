@@ -2,14 +2,14 @@
     <div>
         <MainHeading text="Contact" />
         <div class="container my-5">
-            <div class="row">
-                <div class="col-12 col-md-6 bg-dark">
+            <div class="row mx-auto">
+                <div class="col-12 col-md-6 offset-md-3 bg-dark">
                     <form id="contactform" action="/contact.php" method="POST" class="my-4 mx-auto text-center">
                         <div class="form-group">
                             <label for="name" class=" w-100 col-form-label"></label>
                             <input id="name" name="name" type="text" placeholder="Your name" pattern="^[A-Za-z ]{2,35}$"
                                 required><br>
-                            <span id="name_error" style="color: red;">Please, enter a valid name</span>
+                            <span id="name_error"><br></span>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-form-label"></label>
@@ -23,19 +23,16 @@
                                 placeholder="Your message:"></textarea>
 
                         </div>
-                        <MainButton text="Submit" @click="submitContact()" />
+                        <MainButton text="Submit" id="contact_submit" @click.native="contactSubmit()" />
                     </form>
                 </div>
-                <div class="col-12 col-md-6 mx-auto my-auto" >
-                    <div class="row">
-                    <span class="icon-wrap mx-auto position-relative" 
-                    @mouseenter="iconHover($event)" @mouseleave="iconHover($event)"
-                    :style="'border: 1px solid '+ $store.state.primary_color" 
+            </div>
+            <div class="row  col-12 col-md-6 mx-auto mt-4">
+                <span class="icon-wrap mx-auto position-relative" @mouseenter="iconHover($event)"
+                    @mouseleave="iconHover($event)" :style="'border: 1px solid '+ $store.state.primary_color"
                     v-for="(icon, index) in icons" :key="index" :index="index">
-                        <font-awesome-icon :icon="['fab', icon]" class="mx-auto my-auto" />
-                    </span>
-                    </div>
-                </div>
+                    <font-awesome-icon :icon="['fab', icon]" class="mx-auto my-auto" />
+                </span>
             </div>
         </div>
     </div>
@@ -62,28 +59,152 @@
                     $(e.target).attr('rows', rows + 1)
                 }
             },
-            iconHover (e) {
-                let value =  e.type === 'mouseenter'? '-10px': 0
+            iconHover(e) {
+                let value = e.type === 'mouseenter' ? '-10px' : 0
                 $(e.target).css({
                     transform: 'translateY(' + value + ')',
-                    color: e.type=== 'mouseenter'? this.$store.state.primary_color : '#fff'
+                    color: e.type === 'mouseenter' ? this.$store.state.primary_color : '#fff'
                 })
+            },
+            setStyles() {
+                let green = this.$store.state.primary_color
+                $('#contactform input, #contactform textarea').css({
+                    border: 'none',
+                    borderBottom: '2px solid ' + green,
+                    color: green
+                })
+                let icons = $('.icon-wrap');
+                $(icons).each(el => {
+                    let item = icons[el],
+                        index = parseInt($(item).attr('index'))
+                    if (index > 0 && index % 2 === 0) {
+                        $('</div><div class="row">').insertAfter(item)
+                    }
+                });
+            },
+            contactSubmit() {
+                console.log('submit')
+                 $('#contactform').submit()
+            },
+            contactSet() {
+                const color = this.$store.state.primary_color;
+                var Contact = (function () {
+
+                    var reg, the_value, the_id;
+
+                    function validation() { //Validation hints:
+                        $("input, textarea").blur(function () {
+                            reg = new RegExp($(this).attr("pattern"));
+                            the_value = $(this).val();
+                            the_id = $(this).attr("id");
+
+                            if (reg.test(the_value)) {
+
+                                $(this).css({
+                                    "box-shadow": "1px 1px 2px 4px " + color,
+                                    background: 'transparent'
+                                });
+                                $("#" + the_id + "_error").css({
+                                    color: "transparent !important"
+                                });
+
+                            } else {
+
+                                $(this).css({
+                                    "box-shadow": "1px 1px 2px 4px red"
+                                });
+
+                                if (the_id == "tel") {
+                                    $("#" + the_id + "_error").css({
+                                        color: "red"
+                                    }).html("Please, enter a valid phone number");
+                                } else {
+                                    $("#" + the_id + "_error").css({
+                                        color: "red"
+                                    }).html("Please, enter a valid " + the_id);
+                                }
+                            }
+
+                        });
+                        $("input").focus(function () {
+                            $(this).css("box-shadow", "none");
+                            $("#" + the_id + "_error").css({
+                                color: "transparent"
+                            });
+
+                        });
+                    }
+
+                    function processing() {
+
+                        $("form").on("submit", function () {
+
+                            var name = $('#name').val(),
+                                email = $('#email').val(),
+                                tel = $('#tel').val(),
+                                message = $('#message').val();
+
+
+                            if (name && email && tel && reg.test(the_value)) {
+
+                                $('form').slideUp();
+
+
+                                $('#msg').fadeIn()
+                                    .delay(5000)
+                                    .fadeOut()
+                                    .empty();
+
+
+                                //following code is used here instead of the $.post function 
+                                //and should be deleted if you are using it,
+                                //just inserted this for presentation since GH hosting doesn't support php
+                                $("#msg").append('<h3 class="pt-1">Thank you, ' + name +
+                                    '. The message was successfully sent.</h3><hr>');
+
+
+                                $('form').delay(5000).slideDown();
+                                $('#name').val('');
+                                $('#email').val('');
+                                $('#tel').val('');
+                                $('#message').val('');
+                                $("input").css("box-shadow", "none");
+                            }
+
+                            $.post("/contact.php", {
+                                    name: name,
+                                    email: email,
+                                    tel: tel,
+                                    message: message
+                                },
+                                function (data) {
+
+                                    $("#msg").append("<p>" + data + "</p>");
+
+
+                                });
+                            return false;
+
+                        });
+
+                    }
+
+                    function init() {
+                        validation();
+                        processing();
+                    }
+                    return {
+                        init: init
+                    };
+                })();
+                console.log('constact')
+                Contact.init();
+
             }
         },
         mounted() {
-            let green = this.$store.state.primary_color
-            $('#contactform input, #contactform textarea').css({
-                border: 'none',
-                borderBottom: '2px solid ' + green,
-                color: green
-            })
-            let icons = $('.icon-wrap');
-            $(icons).each(el => {
-                let item = icons[el], index = parseInt($(item).attr('index'))
-                if (index > 0 && index % 2 === 0) {
-                    $('</div><div class="row">').insertAfter(item)
-                } 
-            });
+            this.setStyles()
+            this.contactSet()
         }
     }
 </script>
@@ -110,9 +231,12 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-    -webkit-transition: all ease-in 0.2s;
-    -moz-transition: all ease-in 0.2s;
-    -o-transition: all ease-in 0.2s;
-    transition: all ease-in 0.2s;
+        -webkit-transition: all ease-in 0.2s;
+        -moz-transition: all ease-in 0.2s;
+        -o-transition: all ease-in 0.2s;
+        transition: all ease-in 0.2s;
+    }
+    input:-internal-autofill-selected {
+        background-color: transparent !important;
     }
 </style>

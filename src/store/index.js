@@ -130,8 +130,8 @@ export default new Vuex.Store({
           id: 0, 
           name: 'Terms of use & Privacy', 
           code: 'tos',
-          content: `The only information I collect on this webpage is your name, 
-          phone number and email, when you make an enquiery with a contact form. 
+          content: `The only information I collect on this webpage is your name
+           and your email, when you make an enquiery with a contact form. 
           The only use of that information for me is to get back to you with answers, 
           I don't pass it to any third parties.`
         },

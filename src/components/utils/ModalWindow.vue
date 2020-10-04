@@ -1,7 +1,7 @@
 <template>
   <div>
         <div class="modal" tabindex="-1" role="dialog" >
-  <div class="modal-dialog" role="document" :style="'top: 15vh; background-color:' + $store.state.secondary_color">
+  <div class="modal-dialog m-0" role="document" :style="'top: 15vh; background-color:' + $store.state.secondary_color">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title"></h5>

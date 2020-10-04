@@ -6,7 +6,7 @@ const Helper = {
   install(Vue) {
     Vue.prototype.showModal = (title, content) => {
           $('.modal').find('.modal-title').text(title);
-          $('.modal').find('.modal-body p').text(content);
+          $('.modal').find('.modal-body p').html(content);
           $('.modal').fadeIn();
     };
   },
@@ -149,14 +149,11 @@ export default new Vuex.Store({
           id: 1, 
           name: 'Credits', 
           code: 'credits',
-          content: 'credits'
+          content: `<div>Homepage icons made by <a href="https://www.flaticon.local/authors/freepik" title="Freepik">
+          Freepik</a> from <a href="https://www.flaticon.local/" title="Flaticon">www.flaticon.local</a></div>
+          <div>Design inspirations : <a href='https://gentium.pixerex.com/wp/'>Gentium</a></div>
+          <div>Cool particles animation: <a href='https://codepen.io/natewiley/pen/GgONKy'>Nate Wiley</a></div>`
         }
     ]
-  },
-  mutations: {
-
-  },
-  actions: {
-        
   }
 });

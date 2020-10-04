@@ -38,7 +38,6 @@
                 const code = $(e.target).attr('code')
                 const items = this.$store.state.footerlinks.filter(item => item.code === code);
                 let item = items[0]
-                //this.$store.commit('showModal')
                 this.showModal(item.name, item.content)
             },
             

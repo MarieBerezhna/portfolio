@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-      <div>Icons made by <a href="https://www.flaticon.local/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.local/" title="Flaticon">www.flaticon.local</a></div>
+      
     </div>
 </template>
 
@@ -78,58 +78,47 @@
                     borderBottom: '2px solid ' + green,
                     color: green
                 })
-                // let icons = $('.icon-wrap');
-                // $(icons).each(el => {
-                //     let item = icons[el],
-                //         index = parseInt($(item).attr('index'))
-                //     if (index > 0 && index % 2 === 0) {
-                //         $('</div><div class="row">').insertAfter(item)
-                //     }
-                // });
             },
             contactSubmit() {
-                            var name = $('#name').val(),
-                                email = $('#email').val(),
-                                message = $('#message').val();
+                var name = $('#name').val(),
+                    email = $('#email').val(),
+                    message = $('#message').val();
 
 
-                            if (name && email) {
+                if (name && email) {
 
-                                $('#contactform').slideUp();
-
-
-                                $('#msg').fadeIn()
-                                    .delay(5000)
-                                    .fadeOut()
-                                    .empty();
+                    $('#contactform').slideUp();
 
 
-                                //following code is used here instead of the $.post function 
-                                //and should be deleted if you are using it,
-                                //just inserted this for presentation since GH hosting doesn't support php
-                                $("#msg").append('<h3 class="pt-1">Thank you, ' + name +
-                                    '. The message was successfully sent.</h3><hr>');
+                    $('#msg').fadeIn()
+                        .delay(5000)
+                        .fadeOut()
+                        .empty();
 
 
-                                $('#contactform').delay(5000).slideDown();
-                                $('#name').val('');
-                                $('#email').val('');
-                                $('#message').val('');
-                                $("input").css("box-shadow", "none");
-                            }
+                    //following code is used here instead of the $.post function 
+                    //and should be deleted if you are using it,
+                    //just inserted this for presentation since GH hosting doesn't support php
+                    $("#msg").append();
+ this.showModal('Message sent!', '<h3 class="pt-1">Thank you, ' + name +
+                        '. The message was successfully sent.</h3><hr>')
 
-                            $.post("/contact.php", {
-                                    name: name,
-                                    email: email,
-                                    message: message
-                                },
-                                function (data) {
+                    $('#contactform').delay(5000).slideDown();
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#message').val('');
+                    $("input").css("box-shadow", "none");
+                }
 
-                                    $("#msg").append("<p>" + data + "</p>");
-
-
-                                });
-                            return false;
+                $.post("/contact.php", {
+                        name: name,
+                        email: email,
+                        message: message
+                    },
+                    function (data) {
+                        this.showModal('Message sent!', data)
+                    });
+                return false;
             },
             contactSet() {
                 const color = this.$store.state.primary_color;
@@ -182,13 +171,11 @@
 
                     function init() {
                         validation();
-                        // processing();
                     }
                     return {
                         init: init
                     };
                 })();
-                console.log('constact')
                 Contact.init();
 
             }

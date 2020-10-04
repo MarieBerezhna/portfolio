@@ -44,9 +44,6 @@
             ...mapActions([
                 'openModal'
             ])
-        },
-        created () {
-            
         }
     }
 </script>

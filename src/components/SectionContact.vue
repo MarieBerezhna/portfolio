@@ -23,8 +23,7 @@
                                 placeholder="Your message:"></textarea>
 
                         </div>
-                        <MainButton text="Submit" id="contact_submit" 
-                        @click.native="contactSubmit()" class="mb-5" />
+                        <MainButton text="Submit" id="contact_submit" @click.native="contactSubmit()" class="mb-5" />
                     </form>
                     <div id="msg"></div>
                 </div>
@@ -39,7 +38,7 @@
                 </div>
             </div>
         </div>
-      
+
     </div>
 </template>
 
@@ -87,37 +86,29 @@
 
                 if (name && email) {
 
-                    $('#contactform').slideUp();
-
-
-                    $('#msg').fadeIn()
-                        .delay(5000)
-                        .fadeOut()
-                        .empty();
-
-
-                    //following code is used here instead of the $.post function 
-                    //and should be deleted if you are using it,
-                    //just inserted this for presentation since GH hosting doesn't support php
-                    $("#msg").append();
- this.showModal('Message sent!', '<h3 class="pt-1">Thank you, ' + name +
-                        '. The message was successfully sent.</h3><hr>')
-
-                    $('#contactform').delay(5000).slideDown();
                     $('#name').val('');
                     $('#email').val('');
                     $('#message').val('');
                     $("input").css("box-shadow", "none");
                 }
 
-                $.post("/contact.php", {
-                        name: name,
-                        email: email,
-                        message: message
-                    },
-                    function (data) {
-                        this.showModal('Message sent!', data)
-                    });
+                if (window.location.host.indexOf('localhost') !== -1) {
+
+                    this.showModal('Message sent!',
+                        '<h4 class="pt-1">Thank you, ' + name +
+                        '. The message was successfully sent.</h4><hr>')
+                } else {
+                    $.post("/contact.php", {
+                            name: name,
+                            email: email,
+                            message: message
+                        },
+                        function (data) {
+                            this.showModal('Message sent!', data)
+                        });
+                }
+
+
                 return false;
             },
             contactSet() {
@@ -200,10 +191,12 @@
         text-align: center;
         background-color: transparent;
     }
+
     .icons-row {
         display: flex;
         flex-direction: row;
     }
+
     .icon-wrap {
         display: inline-flex;
         flex-direction: row;

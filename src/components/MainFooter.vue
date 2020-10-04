@@ -6,7 +6,7 @@
                     <div class="col-md-6 col-12 order-md-2 ">
                         <ul>
                             <li v-for="link in this.$store.state.footerlinks" :key="link.id">
-                                <MenuLink :name="link.name" :code="link.code" @click.native="openModal($event)" />
+                                <MenuLink :name="link.name" :code="link.code" @click.native="goModal($event)" />
                             </li>
                         </ul>
                     </div>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
     import $ from 'jquery'
     export default {
         name: 'MainFooter',
@@ -33,18 +34,20 @@
             ModalWindow: () => import('@/components/utils/ModalWindow.vue')
         },
         methods: {
-            openModal(e) {
-                console.log(e.target)
-                const items = this.$store.state.footerlinks
+            goModal(e) {
                 const code = $(e.target).attr('code')
-                let item = items.filter(item => item.code === code);
-                item = item[0]
-                console.log(item)
-
-                $('.modal').find('.modal-title').text(item.name)
-                $('.modal').find('.modal-body p').text(item.content)
-                $('.modal').fadeIn()
-            }
+                const items = this.$store.state.footerlinks.filter(item => item.code === code);
+                let item = items[0]
+                //this.$store.commit('showModal')
+                this.showModal(item.name, item.content)
+            },
+            
+            ...mapActions([
+                'openModal'
+            ])
+        },
+        created () {
+            
         }
     }
 </script>

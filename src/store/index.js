@@ -1,7 +1,17 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import $ from 'jquery';
 Vue.use(Vuex);
-
+const Helper = {
+  install(Vue) {
+    Vue.prototype.showModal = (title, content) => {
+          $('.modal').find('.modal-title').text(title);
+          $('.modal').find('.modal-body p').text(content);
+          $('.modal').fadeIn();
+    };
+  },
+};
+Vue.use(Helper);
 export default new Vuex.Store({
   state: {
     primary_color: '#5BFFAA',
@@ -22,7 +32,7 @@ export default new Vuex.Store({
     boxes: [{
         id: 0,
         title: 'Creative Mindset',
-        icon: 'web-design.png',
+        icon: 'puzzle.png',
         content: `2+ years of experience in web development with a strong focus on front-end web applications,
           striving for responsive websites and user-friendly interfaces.
           Trying out different styles and creating my own, 
@@ -32,7 +42,7 @@ export default new Vuex.Store({
       {
         id: 1,
         title: 'Forever Student',
-        icon: '003-analytics.png',
+        icon: 'learning.png',
         content: `Passionate about solving challenging problems, 
         gaining knowledge and mastering  skills as technological tendencies evolve. 
         Exploring new things is an essential need for a healthy human consciousness, if you ask me.
@@ -42,7 +52,7 @@ export default new Vuex.Store({
       {
         id: 2,
         title: 'Team Player',
-        icon: '001-analytics.png',
+        icon: 'teamwork.png',
         content: `Communication skills are vital nowadays.
         While most of my jobs are freelance projects, 
         I did work in a startup team for a while, and will gladly do it again.
@@ -143,6 +153,10 @@ export default new Vuex.Store({
         }
     ]
   },
-  mutations: {},
-  actions: {}
+  mutations: {
+
+  },
+  actions: {
+        
+  }
 });

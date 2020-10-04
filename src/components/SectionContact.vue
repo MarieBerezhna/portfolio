@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div id="contact">
         <MainHeading text="Contact" />
         <div class="container my-5">
-            <div class="row mx-auto">
+            <div class="row mx-auto ">
                 <div class="col-12 col-md-6 offset-md-3 bg-dark">
                     <form id="contactform" action="/contact.php" method="POST" class="my-4 mx-auto text-center">
                         <div class="form-group">
@@ -23,18 +23,23 @@
                                 placeholder="Your message:"></textarea>
 
                         </div>
-                        <MainButton text="Submit" id="contact_submit" @click.native="contactSubmit()" />
+                        <MainButton text="Submit" id="contact_submit" 
+                        @click.native="contactSubmit()" class="mb-5" />
                     </form>
+                    <div id="msg"></div>
                 </div>
             </div>
-            <div class="row  col-12 col-md-6 mx-auto mt-4">
-                <span class="icon-wrap mx-auto position-relative" @mouseenter="iconHover($event)"
-                    @mouseleave="iconHover($event)" :style="'border: 1px solid '+ $store.state.primary_color"
-                    v-for="(icon, index) in icons" :key="index" :index="index">
-                    <font-awesome-icon :icon="['fab', icon]" class="mx-auto my-auto" />
-                </span>
+            <div class="row">
+                <div class="icons-row col-12 col-md-6 mx-auto mt-4">
+                    <span class="icon-wrap mx-auto position-relative" @mouseenter="iconHover($event)"
+                        @mouseleave="iconHover($event)" :style="'border: 1px solid '+ $store.state.primary_color"
+                        v-for="(icon, index) in icons" :key="index" :index="index">
+                        <font-awesome-icon :icon="['fab', icon]" class="mx-auto my-auto" />
+                    </span>
+                </div>
             </div>
         </div>
+      <div>Icons made by <a href="https://www.flaticon.local/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.local/" title="Flaticon">www.flaticon.local</a></div>
     </div>
 </template>
 
@@ -73,18 +78,58 @@
                     borderBottom: '2px solid ' + green,
                     color: green
                 })
-                let icons = $('.icon-wrap');
-                $(icons).each(el => {
-                    let item = icons[el],
-                        index = parseInt($(item).attr('index'))
-                    if (index > 0 && index % 2 === 0) {
-                        $('</div><div class="row">').insertAfter(item)
-                    }
-                });
+                // let icons = $('.icon-wrap');
+                // $(icons).each(el => {
+                //     let item = icons[el],
+                //         index = parseInt($(item).attr('index'))
+                //     if (index > 0 && index % 2 === 0) {
+                //         $('</div><div class="row">').insertAfter(item)
+                //     }
+                // });
             },
             contactSubmit() {
-                console.log('submit')
-                 $('#contactform').submit()
+                            var name = $('#name').val(),
+                                email = $('#email').val(),
+                                message = $('#message').val();
+
+
+                            if (name && email) {
+
+                                $('#contactform').slideUp();
+
+
+                                $('#msg').fadeIn()
+                                    .delay(5000)
+                                    .fadeOut()
+                                    .empty();
+
+
+                                //following code is used here instead of the $.post function 
+                                //and should be deleted if you are using it,
+                                //just inserted this for presentation since GH hosting doesn't support php
+                                $("#msg").append('<h3 class="pt-1">Thank you, ' + name +
+                                    '. The message was successfully sent.</h3><hr>');
+
+
+                                $('#contactform').delay(5000).slideDown();
+                                $('#name').val('');
+                                $('#email').val('');
+                                $('#message').val('');
+                                $("input").css("box-shadow", "none");
+                            }
+
+                            $.post("/contact.php", {
+                                    name: name,
+                                    email: email,
+                                    message: message
+                                },
+                                function (data) {
+
+                                    $("#msg").append("<p>" + data + "</p>");
+
+
+                                });
+                            return false;
             },
             contactSet() {
                 const color = this.$store.state.primary_color;
@@ -135,63 +180,9 @@
                         });
                     }
 
-                    function processing() {
-
-                        $("form").on("submit", function () {
-
-                            var name = $('#name').val(),
-                                email = $('#email').val(),
-                                tel = $('#tel').val(),
-                                message = $('#message').val();
-
-
-                            if (name && email && tel && reg.test(the_value)) {
-
-                                $('form').slideUp();
-
-
-                                $('#msg').fadeIn()
-                                    .delay(5000)
-                                    .fadeOut()
-                                    .empty();
-
-
-                                //following code is used here instead of the $.post function 
-                                //and should be deleted if you are using it,
-                                //just inserted this for presentation since GH hosting doesn't support php
-                                $("#msg").append('<h3 class="pt-1">Thank you, ' + name +
-                                    '. The message was successfully sent.</h3><hr>');
-
-
-                                $('form').delay(5000).slideDown();
-                                $('#name').val('');
-                                $('#email').val('');
-                                $('#tel').val('');
-                                $('#message').val('');
-                                $("input").css("box-shadow", "none");
-                            }
-
-                            $.post("/contact.php", {
-                                    name: name,
-                                    email: email,
-                                    tel: tel,
-                                    message: message
-                                },
-                                function (data) {
-
-                                    $("#msg").append("<p>" + data + "</p>");
-
-
-                                });
-                            return false;
-
-                        });
-
-                    }
-
                     function init() {
                         validation();
-                        processing();
+                        // processing();
                     }
                     return {
                         init: init
@@ -222,7 +213,10 @@
         text-align: center;
         background-color: transparent;
     }
-
+    .icons-row {
+        display: flex;
+        flex-direction: row;
+    }
     .icon-wrap {
         display: inline-flex;
         flex-direction: row;
@@ -236,6 +230,7 @@
         -o-transition: all ease-in 0.2s;
         transition: all ease-in 0.2s;
     }
+
     input:-internal-autofill-selected {
         background-color: transparent !important;
     }

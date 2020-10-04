@@ -1,5 +1,6 @@
 <template>
-    <div class="modal" tabindex="-1" role="dialog" >
+  <div>
+        <div class="modal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" role="document" :style="'top: 15vh; background-color:' + $store.state.secondary_color">
     <div class="modal-content">
       <div class="modal-header">
@@ -17,6 +18,7 @@
     </div>
   </div>
 </div>
+  </div>
 </template>
 
 <script>
@@ -36,7 +38,7 @@ import $ from 'jquery'
 
 <style lang="scss" scoped>
     .modal {
-       
+          display: none;
            background-color: rgba(12, 13, 13, 0.5) !important;
         .modal-content{
             background-color: unset;

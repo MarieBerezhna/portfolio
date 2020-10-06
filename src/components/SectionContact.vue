@@ -3,7 +3,7 @@
         <MainHeading text="Contact" />
         <div class="container my-5">
             <div class="row mx-auto ">
-                <div class="col-12 col-md-6 offset-md-3 bg-dark">
+                <div class="col-12 col-md-6 offset-md-3" :style="'background-color: '+ this.$store.state.secondary_color">
                     <form id="contactform" action="/contact.php" method="POST" class="my-4 mx-auto text-center">
                         <div class="form-group">
                             <label for="name" class=" w-100 col-form-label"></label>
@@ -189,7 +189,6 @@
         resize: none;
         height: auto
     }
-
     input,
     textarea,
     .btn {

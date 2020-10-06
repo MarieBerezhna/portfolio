@@ -9,6 +9,24 @@ const Helper = {
       $('.modal').find('.modal-body p').html(content);
       $('.modal').fadeIn();
     };
+    Vue.prototype.checkVisible = (selector, index) => {
+      // console.log(selector, index);
+          const el = $(selector)[index];
+          const win = $(window)[0];
+          const wView = {
+              left: $(win).scrollLeft(),
+              right: $(win).scrollLeft() + $(win).width()
+          };
+          const pView = {
+              left: $(el).position().left,
+              right: $(el).position().left + $(el).width()
+          };
+          
+          if (pView.right <= wView.right && pView.left >= wView.left) return true;
+          
+          return false;
+
+    };
   },
 };
 Vue.use(Helper);

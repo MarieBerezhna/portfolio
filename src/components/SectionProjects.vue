@@ -1,9 +1,9 @@
 <template>
     <section id="projects" class="py-3">
         <MainHeading text="Projects" />
-        <div class="container-fluid position-relative mt-3 mb-5 p-0">
-            <div class="row position-absolute projects-wrapper">
-                <div class="project" :style="'background-image: url(' + require('../assets/projects/' + project.img)"
+        <div class="container-fluid mt-3 mb-5 p-0">
+            <div class="row projects-wrapper">
+                <div class="project position-relative" :style="'background-image: url(' + require('../assets/projects/' + project.img)"
                     v-for="project in this.$store.state.projects" :key="project.id">
                     <div class="cover position-relative text-center">
                         <div class="content w-50 mx-auto">
@@ -19,12 +19,10 @@
         <div class="container">
             <div class="dots-wrapper row position-relative">
                 <div class="col text-center">
-                    <span>
-                        <span class="dot active" @click="dotClick($event)"></span>
-                    </span>
+
                     <span v-for="project in this.$store.state.projects" :key="project.id + 1">
-                        <span v-if="!checkVisible(project.id)" :item="project.id + 1" class="dot" 
-                        @click="dotClick($event)"></span>
+                        <span :class="{active: project.id === 0}" :item="project.id" class="dot"
+                            @click="dotClick($event)"></span>
                     </span>
                 </div>
             </div>
@@ -41,47 +39,50 @@
             MainButton: () => import('@/components/utils/MainButton.vue')
         },
         methods: {
-            dotClick(e) {
-                console.log(e.target)
-            },
-            checkVisible(index) {
-                $(document).ready(function () {
-                    const el = $('.project')[index]
-                    const win = $(window)[0]
-                    const wView = {
-                        left: $(win).scrollLeft(),
-                        right: $(win).scrollLeft() + $(win).width()
-                    }
-                    const pView = {
-                        left: $(el).position().left,
-                        right: $(el).position().left + $(el).width()
-                    }
-                    // if (pView.right <= wView.right && pView.left >= wView.left) return true
-                    // return false
-                    if (pView.right <= wView.right && pView.left >= wView.left) { console.log(true) 
-                     } else { console.log(false) }
-                })
+            setStyles() {
+                const num = $('.project').length
+                const width = $('.project').width()
+                const vm = this
 
+                // set offscreen wrapper width
+                $('.projects-wrapper').width(num * width)
+                // add a dot for each offscreen item
+                $('.project').each(function (el) {
+                    let visible = vm.checkVisible($('.project'), el)
+                    let dot = $('.dot[item="' + el + 1 + '"]')
+                    if (visible) {
+                        $(dot).css('display', 'none')
+
+                    } else if (!visible && el >= $('.project').length - 3){
+                        console.log(el, visible)
+                         $(dot).css('display', 'none')
+                    }
+                })
+                let styles = `<style>
+                .active {
+                    background: `+ this.$store.state.primary_color + `;
+                }
+                .dot {
+                    border: 1px solid ` +this.$store.state.primary_color+ `
+                } </style>`
+                $('#projects').prepend(styles)
+            },
+            dotClick(e) {
+                const current = $('.dot.active');
+                const cIdx = parseInt($(current).attr('item'))
+                const tIdx = parseInt($(e.target).attr('item'))
+                let dist = $('.project').width()
+                // const wrapper = $('.projects-wrapper')[0]
+                // console.log(wrapper)
+                // console.log(tIdx - cIdx)
+                dist = dist * (tIdx - cIdx)
+                $(current).removeClass('active')
+                $(e.target).addClass('active')
+                  $('.project').delay(500).animate({ left: '+=' + -dist })
             }
         },
         mounted() {
-            let num = $('.project').length
-            let width = $('.project').width()
-            //let projects = $('.project')
-            let vm = this
-            // set offscreen wrapper width
-            $('.projects-wrapper').width(num * width)
-            // add a dot for each offscreen item
-            $('.project').each(function (el) {
-                let item = $('.project')[el]
-                console.log(item)
-                let visible = vm.checkVisible(el)
-                console.log(visible)
-            })
-            $('.active').css('background', this.$store.state.primary_color)
-            $('.dot').css({
-                border: '1px solid ' + this.$store.state.primary_color
-            })
+            this.setStyles()
         }
     }
 </script>
@@ -102,7 +103,15 @@
         overflow-y: hidden;
         overflow-x: auto;
     }
-
+.projects-wrapper {
+    display: -webkit-box;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+.projects-wrapper::-webkit-scrollbar,
+.container-fluid::-webkit-scrollbar {
+    display: none;
+}
     .project {
         padding: 0 !important;
         height: 100vw;

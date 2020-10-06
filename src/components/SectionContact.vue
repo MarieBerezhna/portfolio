@@ -98,13 +98,14 @@
                         '<h4 class="pt-1">Thank you, ' + name +
                         '. The message was successfully sent.</h4><hr>')
                 } else {
+                    const app = this;
                     $.post("/contact.php", {
                             name: name,
                             email: email,
                             message: message
                         },
                         function (data) {
-                            this.showModal('Message sent!', data)
+                            app.showModal('Message sent!', data)
                         });
                 }
 

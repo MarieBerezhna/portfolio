@@ -110,7 +110,8 @@ export default new Vuex.Store({
         }
       ]
     },
-    projects: [{
+    projects: [
+      {
         id: 0,
         name: 'Tomatick',
         url: 'https://tomatick.webmarie.com',
@@ -132,6 +133,14 @@ export default new Vuex.Store({
         url: '/wheel/',
         img: 'wheel.jpg',
         description: 'Spinner game with HTML5 Canvas',
+        tags: []
+      },
+      {
+        id: 3,
+        name: 'Tomatick',
+        url: 'https://tomatick.webmarie.com',
+        img: 'tomatick.jpg',
+        description: 'Pomodoro clock',
         tags: []
       }
     ],

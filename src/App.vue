@@ -1,12 +1,11 @@
 <template>
   <div id="app">
     <MainMenu :sections="this.$store.state.sections" />
-    <HelloWorld :color="color" />
+    <HelloWorld />
     <SectionSkills />
     <SectionProjects />
     <SectionContact />
     <MainFooter />
-    <!-- <div>Icons made by <a href="https://www.flaticon.local/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.local/" title="Flaticon">www.flaticon.local</a></div> -->
   </div>
 
 </template>
@@ -23,11 +22,6 @@
       SectionProjects: () => import('./components/SectionProjects.vue'),
       SectionContact: () => import('./components/SectionContact.vue'),
       MainFooter: () => import('./components/MainFooter.vue')
-    },
-    data() {
-      return {
-        color: this.$store.state.color
-      }
     }
   }
 </script>
@@ -75,7 +69,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #ccc;
-
+    a {
+      color: $green;
+    }
   }
 
   .row {

@@ -5,9 +5,9 @@ Vue.use(Vuex);
 const Helper = {
   install(Vue) {
     Vue.prototype.showModal = (title, content) => {
-          $('.modal').find('.modal-title').text(title);
-          $('.modal').find('.modal-body p').html(content);
-          $('.modal').fadeIn();
+      $('.modal').find('.modal-title').text(title);
+      $('.modal').find('.modal-body p').html(content);
+      $('.modal').fadeIn();
     };
   },
 };
@@ -110,8 +110,28 @@ export default new Vuex.Store({
         }
       ]
     },
-    projects: [
+    social_icons: [{
+        name: 'facebook-f',
+        url: 'https://www.facebook.com/WebMarieCreative'
+      },
       {
+        name: 'linkedin-in',
+        url: 'https://www.linkedin.com/in/webmarie/'
+      },
+      {
+        name: 'whatsapp',
+        url: 'https://wa.me/972528316545'
+      },
+      {
+        name: 'instagram',
+        url: 'https://www.instagram.com/webmariehosting/'
+      },
+      {
+        name: 'github',
+        url: 'https://github.com/MarieBerezhna'
+      }
+    ],
+    projects: [{
         id: 0,
         name: 'Tomatick',
         url: 'https://tomatick.webmarie.com',
@@ -144,25 +164,24 @@ export default new Vuex.Store({
         tags: []
       }
     ],
-    footerlinks: [
-        { 
-          id: 0, 
-          name: 'Terms of use & Privacy', 
-          code: 'tos',
-          content: `The only information I collect on this webpage is your name
+    footerlinks: [{
+        id: 0,
+        name: 'Terms of use & Privacy',
+        code: 'tos',
+        content: `The only information I collect on this webpage is your name
            and your email, when you make an enquiery with a contact form. 
           The only use of that information for me is to get back to you with answers, 
           I don't pass it to any third parties.`
-        },
-        {
-          id: 1, 
-          name: 'Credits', 
-          code: 'credits',
-          content: `<div>Homepage icons made by <a href="https://www.flaticon.local/authors/freepik" title="Freepik">
+      },
+      {
+        id: 1,
+        name: 'Credits',
+        code: 'credits',
+        content: `<div>Homepage icons made by <a href="https://www.flaticon.local/authors/freepik" title="Freepik">
           Freepik</a> from <a href="https://www.flaticon.local/" title="Flaticon">www.flaticon.local</a></div>
           <div>Design inspirations : <a href='https://gentium.pixerex.com/wp/'>Gentium</a></div>
           <div>Cool particles animation: <a href='https://codepen.io/natewiley/pen/GgONKy'>Nate Wiley</a></div>`
-        }
+      }
     ]
   }
 });

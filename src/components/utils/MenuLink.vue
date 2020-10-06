@@ -24,6 +24,7 @@
                 font-weight: 800;
                 font-size: 1rem;
                 text-align: center;
+                color: #fff !important;
                 &:before {
                     content: '';
                     position: absolute;

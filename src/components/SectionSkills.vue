@@ -1,37 +1,36 @@
 <template>
-    <div>
-        <section id="skills">
-            <MainHeading text="Skills" />
-            <ParticlesBall v-if="window.outerWidth < 992" style="height: 40vh"/>
+  <div>
+    <section id="skills">
+      <MainHeading text="Skills" />
+      <ParticlesBall v-if="window.outerWidth < 992" style="height: 40vh" />
 
-            <div class="container mt-3 mb-5 text-center position-relative">
-                <div class="row py-4 skillset mx-auto" v-for="(skillset, key) in this.$store.state.skills" :key="key">
-                    <h4 class="col-12 my-4 pb-3">
-                        {{ key.toUpperCase().split('_').join(' ') }}
-                    </h4>
+      <div class="container mt-3 mb-5 text-center position-relative">
+        <div class="row py-4 skillset mx-auto" v-for="(skillset, key) in this.$store.state.skills" :key="key">
+          <h4 class="col-12 my-4 pb-3">
+            {{ key.toUpperCase().split('_').join(' ') }}
+          </h4>
 
-                    <div v-for="skill in skillset" :key="skill.id" class="col skill text-center mx-2 hideme">
-                        <img :src="require('../assets/png/skills/' + skill.name.toLowerCase() + '.png')"
-                            :alt="skill.name">
-                        <p>{{ skill.name }}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+          <div v-for="skill in skillset" :key="skill.id" class="col skill text-center mx-2 hideme">
+            <img :src="require('../assets/png/skills/' + skill.name.toLowerCase() + '.png')" :alt="skill.name">
+            <p>{{ skill.name }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
   import $ from 'jquery'
-    export default {
-        name: 'SeactionSkills',
-        components: {
-            MainHeading: () => import('@/components/utils/MainHeading.vue'),
-            ParticlesBall: () => import('@/components/art/ParticlesBall.vue')
-        },
-        created() {
-            this.window = window
-        },
+  export default {
+    name: 'SeactionSkills',
+    components: {
+      MainHeading: () => import('@/components/utils/MainHeading.vue'),
+      ParticlesBall: () => import('@/components/art/ParticlesBall.vue')
+    },
+    created() {
+      this.window = window
+    },
     methods: {
       showOnScroll() {
         /* Check the location of each desired element */
@@ -56,7 +55,7 @@
     destroyed() {
       document.body.removeEventListener('scroll', this.showOnScroll)
     }
-    }
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -64,22 +63,25 @@
     opacity: 0;
     height: 0;
   }
-    .container {
-        display: flex;
-        flex-direction: column;
-        h4 {
-            font-family: "AvantGarde Bold", Sans-serif;
-            font-weight: 800;
-        }
-        img {
-            width: 30px;
-            z-index: 1;
-        }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      font-family: "AvantGarde Bold", Sans-serif;
+      font-weight: 800;
     }
 
-    @media (min-width: 992px) {
-        .container img {
-            width: 50px;
-        }
+    img {
+      width: 30px;
+      z-index: 1;
     }
+  }
+
+  @media (min-width: 992px) {
+    .container img {
+      width: 50px;
+    }
+  }
 </style>

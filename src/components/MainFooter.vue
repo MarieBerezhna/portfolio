@@ -25,7 +25,6 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
     import $ from 'jquery'
     export default {
         name: 'MainFooter',
@@ -39,11 +38,7 @@
                 const items = this.$store.state.footerlinks.filter(item => item.code === code);
                 let item = items[0]
                 this.showModal(item.name, item.content)
-            },
-            
-            ...mapActions([
-                'openModal'
-            ])
+            }
         }
     }
 </script>

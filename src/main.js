@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import App from './App.vue';
+import Vuex from 'vuex';
+import store from './store';
+
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Vuex from 'vuex';
-import store from './store';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebookF, faLinkedinIn, faWhatsapp, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';

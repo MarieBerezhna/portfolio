@@ -32,6 +32,9 @@ import $ from 'jquery'
             closeModal () {
                 $('.modal').fadeOut()
             }
+        },
+        created () {
+          $('.modal a').css('color', this.$store.state.primary_color + '!important')
         }
     }
 </script>
@@ -43,5 +46,6 @@ import $ from 'jquery'
         .modal-content{
             background-color: unset;
         }
+
     }
 </style>

@@ -30,11 +30,16 @@
             </div>
             <div class="row">
                 <div class="icons-row col-12 col-md-6 mx-auto mt-4">
-                    <span class="icon-wrap mx-auto position-relative" @mouseenter="iconHover($event)"
+                    <a class="icon-wrap mx-auto position-relative" 
+                        style="color: #fff"
+                        :href="icon.url" target="_blank"
+                        @mouseenter="iconHover($event)"
                         @mouseleave="iconHover($event)" :style="'border: 1px solid '+ $store.state.primary_color"
-                        v-for="(icon, index) in icons" :key="index" :index="index">
-                        <font-awesome-icon :icon="['fab', icon]" class="mx-auto my-auto" />
-                    </span>
+                        v-for="(icon, index) in this.$store.state.social_icons" :key="index" :index="index">
+                        <font-awesome-icon 
+                        :icon="['fab', icon.name]" class="mx-auto my-auto" />
+                        
+                    </a>
                 </div>
             </div>
         </div>
@@ -53,7 +58,7 @@
         },
         data() {
             return {
-                icons: ['facebook-f', 'linkedin-in', 'whatsapp', 'instagram', 'github']
+                
             }
         },
         methods: {
@@ -64,7 +69,7 @@
                 }
             },
             iconHover(e) {
-                let value = e.type === 'mouseenter' ? '-10px' : 0
+                let value = e.type === 'mouseenter' ? '-5px' : 0
                 $(e.target).css({
                     transform: 'translateY(' + value + ')',
                     color: e.type === 'mouseenter' ? this.$store.state.primary_color : '#fff'

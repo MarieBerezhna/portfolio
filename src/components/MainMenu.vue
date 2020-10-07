@@ -156,7 +156,7 @@ import $ from 'jquery'
         width: calc(100% - 12px);
         z-index: 11;
         ul {
-            position: absolute;
+            position: fixed;
             left: 100vw;
             height: calc(100vh - 80px);
             width: 100vw;

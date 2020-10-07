@@ -1,9 +1,9 @@
 <template>
     <section id="projects" class="py-3">
         <MainHeading text="Projects" />
-        <div class="container-fluid mt-3 mb-5 p-0">
-            <div class="row projects-wrapper">
-                <div class="project position-relative" :style="'background-image: url(' + require('../assets/projects/' + project.img)"
+        <div class="container-fluid mt-3 mb-5 p-0" @touchend="onScroll($event)">
+            <div class="row projects-wrapper"  >
+                <div class="project position-relative"   :style="'background-image: url(' + require('../assets/projects/' + project.img)"
                     v-for="project in this.$store.state.projects" :key="project.id">
                     <div class="cover position-relative text-center">
                         <div class="content w-50 mx-auto">
@@ -20,7 +20,7 @@
             <div class="dots-wrapper row position-relative">
                 <div class="col text-center">
 
-                    <span v-for="project in this.$store.state.projects" :key="project.id + 1">
+                    <span v-for="project in this.$store.state.projects" :key="project.id">
                         <span :class="{active: project.id === 0}" :item="project.id" class="dot"
                             @click="dotClick($event)"></span>
                     </span>
@@ -49,13 +49,9 @@
                 // add a dot for each offscreen item
                 $('.project').each(function (el) {
                     let visible = vm.checkVisible($('.project'), el)
-                    let dot = $('.dot[item="' + el + 1 + '"]')
-                    if (visible) {
-                        $(dot).css('display', 'none')
-
-                    } else if (!visible && el >= $('.project').length - 3){
-                        console.log(el, visible)
-                         $(dot).css('display', 'none')
+                    let dot = $('.dot')[el]
+                    if (visible && el > 0) {
+                        $(dot).remove()
                     }
                 })
                 let styles = `<style>
@@ -69,16 +65,33 @@
             },
             dotClick(e) {
                 const current = $('.dot.active');
-                const cIdx = parseInt($(current).attr('item'))
-                const tIdx = parseInt($(e.target).attr('item'))
+                const cIdx = $('.dot').index('.active')
+                const tIdx = $('.dot').index(e.target)
                 let dist = $('.project').width()
-                // const wrapper = $('.projects-wrapper')[0]
-                // console.log(wrapper)
-                // console.log(tIdx - cIdx)
                 dist = dist * (tIdx - cIdx)
+                let direction = cIdx >= 0? '-=': '+='
+                $('.project').delay(500).animate({ left: direction + dist })
                 $(current).removeClass('active')
                 $(e.target).addClass('active')
-                  $('.project').delay(500).animate({ left: '+=' + -dist })
+            },
+            onScroll (e) {
+                if (e.cancelable) {
+                    e.preventDefault();
+                }
+                      setTimeout (function () {   
+                if (!this.scrolled) {
+                    const unit = $('.project').width()
+                    let cOffset = $(e.target).parent('.projects-wrapper').position().left
+                    cOffset = Math.abs(cOffset)
+                    let dist = cOffset % unit
+                    console.log(dist)
+                    let direction = dist >= unit/2 ? '-=': '+='
+                    $('.project').delay(250).animate({ left: direction + dist })
+                    this.scrolled = true
+                }
+         
+                    this.scrolled = false
+                }, 800)
             }
         },
         mounted() {

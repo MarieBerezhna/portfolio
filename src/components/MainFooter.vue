@@ -2,7 +2,7 @@
     <div>
         <footer :style="'background-color:' + this.$store.state.secondary_color" class="py-5">
             <div class="container">
-                <div class="row mx-auto">
+                <div class="row mx-auto ">
                     <div class="col-md-6 col-12 order-md-2 ">
                         <ul>
                             <li v-for="link in this.$store.state.footerlinks" :key="link.id">
@@ -53,9 +53,23 @@
         ul {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             justify-content: space-evenly;
 
         }
+        p {
+            text-align: center;
+        }
     }
+        @media (min-width: 992px) {
+            footer {
+            ul {
+                align-items: flex-start;
+            }
+            p {
+                text-align: left;
+            }
+            }
+
+        }
 </style>

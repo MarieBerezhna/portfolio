@@ -10,7 +10,6 @@ const Helper = {
       $('.modal').fadeIn();
     };
     Vue.prototype.checkVisible = (selector, index) => {
-      // console.log(selector, index);
           const el = $(selector)[index];
           const win = $(window)[0];
           const wView = {

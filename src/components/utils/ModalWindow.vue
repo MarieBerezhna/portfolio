@@ -1,6 +1,6 @@
 <template>
   <div>
-        <div class="modal" tabindex="-1" role="dialog" >
+  <div class="modal" tabindex="-1" role="dialog" >
   <div class="modal-dialog m-0 m-md-auto" role="document" :style="'top: 15vh; background-color:' + $store.state.secondary_color">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <p></p>
       </div>
       <div class="modal-footer mx-auto">
           <MainButton text="Close" @click.native="closeModal($event)" />
@@ -26,7 +26,7 @@ import $ from 'jquery'
     export default {
         name: 'ModalWindow',
         components: {
-            MainButton: () => import('@/components/utils/MainButton.vue')
+            MainButton: () => import('@/components/utils/MainButton.vue'),
         },
         methods: {
             closeModal () {

@@ -14,7 +14,10 @@
 
           <h1>Hello! <br> I'm <span :style="'color:' + $store.state.primary_color">Marie</span>,</h1>
           <p>Front End Developer</p>
-          <MainButton text="Get In Touch" />
+          <span @click="getInTouch()">
+            <MainButton text="Get In Touch" />
+          </span>
+          
         </div>
       </div>
       <div class="container-fluid  d-flex justify-content-end">
@@ -38,6 +41,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
   export default {
     name: 'HelloWorld',
     components: {
@@ -45,6 +49,13 @@
       ParticlesBall: () => import('@/components/art/ParticlesBall.vue')
     },
     methods: {
+      getInTouch() {
+        console.log('here')
+        let form = $('#contactform').parent()
+        let copy = $(form).clone()
+        let html = $(copy).html()
+        this.showModal("Contact", html)
+      },
       boxHover(e) {
         e.stopPropagation()
         let primary = this.$store.state.primary_color

@@ -13,14 +13,15 @@
 <script>
   import MainMenu from './components/MainMenu.vue'
   import HelloWorld from './components/HelloWorld.vue'
+  import SectionContact from './components/SectionContact.vue'
   export default {
     name: 'App',
     components: {
       MainMenu,
       HelloWorld,
+      SectionContact,
       SectionSkills: () => import('./components/SectionSkills.vue'),
       SectionProjects: () => import('./components/SectionProjects.vue'),
-      SectionContact: () => import('./components/SectionContact.vue'),
       MainFooter: () => import('./components/MainFooter.vue')
     }
   }

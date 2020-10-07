@@ -1,5 +1,5 @@
 <template >
-    <a class="btn my-3 main-btn" :href="href? href : '#'"
+    <a class="btn my-3 main-btn" :href="href? href : '#'" 
     @mouseenter="hover($event)"
     @mouseleave="hover($event)"
      >

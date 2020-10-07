@@ -1,33 +1,36 @@
 <template>
-    <section id="projects" class="py-3">
-        <MainHeading text="Projects" />
-        <div class="container-fluid mt-3 mb-5 p-0" @touchend="onScroll($event)">
-            <div class="row projects-wrapper"  >
-                <div class="project position-relative"   :style="'background-image: url(' + require('../assets/projects/' + project.img)"
-                    v-for="project in this.$store.state.projects" :key="project.id">
-                    <div class="cover position-relative text-center">
-                        <div class="content w-50 mx-auto">
-                            <h5 :style="'border-bottom: 3px solid' + $store.state.primary_color">{{ project.name }}
-                            </h5>
-                            <p>{{ project.description }}</p>
-                            <MainButton text="Open" :href="project.url" />
+    <div>
+        <section id="projects">
+            <MainHeading text="Projects" />
+            <div class="container-fluid mt-3 mb-5 p-0" @touchend="onScroll($event)">
+                <div class="row projects-wrapper">
+                    <div class="project position-relative"
+                        :style="'background-image: url(' + require('../assets/projects/' + project.img)"
+                        v-for="project in this.$store.state.projects" :key="project.id">
+                        <div class="cover position-relative text-center">
+                            <div class="content w-50 mx-auto">
+                                <h5 :style="'border-bottom: 3px solid' + $store.state.primary_color">{{ project.name }}
+                                </h5>
+                                <p>{{ project.description }}</p>
+                                <MainButton text="Open" :href="project.url" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="dots-wrapper row position-relative">
-                <div class="col text-center">
+            <div class="container">
+                <div class="dots-wrapper row position-relative">
+                    <div class="col text-center">
 
-                    <span v-for="project in this.$store.state.projects" :key="project.id">
-                        <span :class="{active: project.id === 0}" :item="project.id" class="dot"
-                            @click="dotClick($event)"></span>
-                    </span>
+                        <span v-for="project in this.$store.state.projects" :key="project.id">
+                            <span :class="{active: project.id === 0}" :item="project.id" class="dot"
+                                @click="dotClick($event)"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -56,10 +59,10 @@
                 })
                 let styles = `<style>
                 .active {
-                    background: `+ this.$store.state.primary_color + `;
+                    background: ` + this.$store.state.primary_color + `;
                 }
                 .dot {
-                    border: 1px solid ` +this.$store.state.primary_color+ `
+                    border: 1px solid ` + this.$store.state.primary_color + `
                 } </style>`
                 $('#projects').prepend(styles)
             },
@@ -69,27 +72,31 @@
                 const tIdx = $('.dot').index(e.target)
                 let dist = $('.project').width()
                 dist = dist * (tIdx - cIdx)
-                let direction = cIdx >= 0? '-=': '+='
-                $('.project').delay(500).animate({ left: direction + dist })
+                let direction = cIdx >= 0 ? '-=' : '+='
+                $('.project').delay(500).animate({
+                    left: direction + dist
+                })
                 $(current).removeClass('active')
                 $(e.target).addClass('active')
             },
-            onScroll (e) {
+            onScroll(e) {
                 if (e.cancelable) {
                     e.preventDefault();
                 }
-                      setTimeout (function () {   
-                if (!this.scrolled) {
-                    const unit = $('.project').width()
-                    let cOffset = $(e.target).parent('.projects-wrapper').position().left
-                    cOffset = Math.abs(cOffset)
-                    let dist = cOffset % unit
-                    console.log(dist)
-                    let direction = dist >= unit/2 ? '-=': '+='
-                    $('.project').delay(250).animate({ left: direction + dist })
-                    this.scrolled = true
-                }
-         
+                setTimeout(function () {
+                    if (!this.scrolled) {
+                        const unit = $('.project').width()
+                        let cOffset = $(e.target).parent('.projects-wrapper').position().left
+                        cOffset = Math.abs(cOffset)
+                        let dist = cOffset % unit
+                        console.log(dist)
+                        let direction = dist >= unit / 2 ? '-=' : '+='
+                        $('.project').delay(250).animate({
+                            left: direction + dist
+                        })
+                        this.scrolled = true
+                    }
+
                     this.scrolled = false
                 }, 800)
             }
@@ -116,15 +123,18 @@
         overflow-y: hidden;
         overflow-x: auto;
     }
-.projects-wrapper {
-    display: -webkit-box;
-    overflow-y: hidden;
-    overflow-x: auto;
-}
-.projects-wrapper::-webkit-scrollbar,
-.container-fluid::-webkit-scrollbar {
-    display: none;
-}
+
+    .projects-wrapper {
+        display: -webkit-box;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+
+    .projects-wrapper::-webkit-scrollbar,
+    .container-fluid::-webkit-scrollbar {
+        display: none;
+    }
+
     .project {
         padding: 0 !important;
         height: 100vw;

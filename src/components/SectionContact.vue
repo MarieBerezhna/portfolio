@@ -1,49 +1,49 @@
 <template>
-    <div id="contact">
-        <MainHeading text="Contact" />
-        <div class="container my-5">
-            <div class="row mx-auto ">
-                <div class="col-12 col-md-6 offset-md-3" :style="'background-color: '+ this.$store.state.secondary_color">
-                    <form id="contactform" action="/contact.php" method="POST" class="my-4 mx-auto text-center">
-                        <div class="form-group">
-                            <label for="name" class=" w-100 col-form-label"></label>
-                            <input id="name" name="name" type="text" placeholder="Your name" pattern="^[A-Za-z ]{2,35}$"
-                                required><br>
-                            <span id="name_error"><br></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-form-label"></label>
-                            <input id="email" name="email" type="text" placeholder="Your e-mail address"
-                                pattern="^(.+)@(.+){2,}\.(.+){2,}$" required><br>
-                            <span id="email_error"> <br></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message"></label>
-                            <textarea @keypress="expandTextarea($event)" id="message" name="message" rows="1" cols="22"
-                                placeholder="Your message:"></textarea>
+    <div>
+        <section id="contact">
+            <MainHeading text="Contact" />
+            <div class="container my-5">
+                <div class="row mx-auto ">
+                    <div class="col-12 col-md-6 offset-md-3"
+                        :style="'background-color: '+ this.$store.state.secondary_color">
+                        <form id="contactform" action="/contact.php" method="POST" class="my-4 mx-auto text-center">
+                            <div class="form-group">
+                                <label for="name" class=" w-100 col-form-label"></label>
+                                <input id="name" name="name" type="text" placeholder="Your name"
+                                    pattern="^[A-Za-z ]{2,35}$" required><br>
+                                <span id="name_error"><br></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-form-label"></label>
+                                <input id="email" name="email" type="text" placeholder="Your e-mail address"
+                                    pattern="^(.+)@(.+){2,}\.(.+){2,}$" required><br>
+                                <span id="email_error"> <br></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message"></label>
+                                <textarea @keypress="expandTextarea($event)" id="message" name="message" rows="1"
+                                    cols="22" placeholder="Your message:"></textarea>
 
-                        </div>
-                        <MainButton text="Submit" id="contact_submit" @click.native="contactSubmit()" class="mb-5" />
-                    </form>
-                    <div id="msg"></div>
+                            </div>
+                            <MainButton text="Submit" id="contact_submit" @click.native="contactSubmit()"
+                                class="mb-5" />
+                        </form>
+                        <div id="msg"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="icons-row col-12 col-md-6 mx-auto mt-4">
+                        <a class="icon-wrap mx-auto position-relative" style="color: #fff" :href="icon.url"
+                            target="_blank" @mouseenter="iconHover($event)" @mouseleave="iconHover($event)"
+                            :style="'border: 1px solid '+ $store.state.primary_color"
+                            v-for="(icon, index) in this.$store.state.social_icons" :key="index" :index="index">
+                            <font-awesome-icon :icon="['fab', icon.name]" class="mx-auto my-auto" />
+
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="icons-row col-12 col-md-6 mx-auto mt-4">
-                    <a class="icon-wrap mx-auto position-relative" 
-                        style="color: #fff"
-                        :href="icon.url" target="_blank"
-                        @mouseenter="iconHover($event)"
-                        @mouseleave="iconHover($event)" :style="'border: 1px solid '+ $store.state.primary_color"
-                        v-for="(icon, index) in this.$store.state.social_icons" :key="index" :index="index">
-                        <font-awesome-icon 
-                        :icon="['fab', icon.name]" class="mx-auto my-auto" />
-                        
-                    </a>
-                </div>
-            </div>
-        </div>
-
+        </section>
     </div>
 </template>
 
@@ -58,7 +58,7 @@
         },
         data() {
             return {
-                
+
             }
         },
         methods: {
@@ -189,6 +189,7 @@
         resize: none;
         height: auto
     }
+
     input,
     textarea,
     .btn {

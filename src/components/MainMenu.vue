@@ -4,7 +4,7 @@
             <a href="/">
                 <img :src="require('../assets/logo.png')" alt="logo" class="logo">
             </a>
-            <div class="header-right closed">
+            <div class="header-right closed position-relative">
                 <div class="open" data-uk-toggle="target: #navbar-mobile">
                     <i></i>
                 </div>
@@ -17,8 +17,8 @@
                 </button>
             </div>
             <ul>
-                <li v-for="sec in sections" :key="sec.name" class="nav-link">
-                    <MenuLink  :name="sec.name.toUpperCase()" :href="'#' + sec.name.toLowerCase()"  @click="menuClick($event)" />
+                <li v-for="sec in sections" :key="sec.name" class="nav-link" @click="menuClick($event)">
+                    <MenuLink  :name="sec.name.toUpperCase()" :href="'#' + sec.name.toLowerCase()"   />
                 </li>
             </ul>
         </nav>
@@ -43,34 +43,29 @@ import $ from 'jquery'
         methods: {
             menuToggle: function () {
                 $('.close').on('click', () => {
-                    $('nav ul, .close').fadeOut()
-                    $('.open').delay(400).fadeIn()
+                    $('.close').hide()
+                    $('.open').delay(400).show()
+                    $('nav ul').animate({left: '100vw'}, 200)
                 })
                 $('.open').on('click', () => {
                     $('.open').hide()
-                    $('nav ul, .close').css('display', 'flex')
-                    var list = $('nav ul li').toArray()
-                    var delay = 0
-                    for (var i = 0; i < list.length; i++) {
-                        delay = delay + 400
-                        $(list[i]).delay(delay).css('opacity', 1)
-                    }
+                    $('.close').css('display', 'flex')
+                    $('nav ul').animate({left: 0}, 250)
                 })
             },
             menuClick: function (e) {
-            var hash = e.target.hash;
-
-            var v = $(hash).offset().top - $(window).scrollTop()
-            console.log(v)
-
-			$('html, body').animate({
-				scrollTop: v
-			}, 1000);
-
-			return false;
+                const element = $(e.target.hash).parent();
+                 $('html, body').animate({
+                    scrollTop: 0
+                },10);
+                $('html, body').delay(20).animate({
+                    scrollTop: $(element).offset().top
+                },200);
+                return false;
             }
         },
         mounted () {
+            window.HTMLElement.prototype.scrollIntoView = function() {};
             this.menuToggle()
         }
     }
@@ -152,19 +147,25 @@ import $ from 'jquery'
     }
 
     nav {
+        height: auto;
+        min-height: 80px;
         position: absolute;
         top: 0;
         left: 0;
         background-color: rgba(0, 0, 0, 0.9);
-        height: 80px;
         width: calc(100% - 12px);
         z-index: 11;
         ul {
-            display: none;
+            position: absolute;
+            left: 100vw;
+            height: calc(100vh - 80px);
+            width: 100vw;
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-bottom: 20px;
+            margin-top: 80px;
+            background-color: rgba(0, 0, 0, 0.9);
             height: calc(100vh - 80px);
             padding-left: 0;
         }
@@ -175,13 +176,19 @@ import $ from 'jquery'
             display: none;
         }
         nav {
+              height: 80px;
             max-height: 80px;
             ul {
-                display: flex;
+                position: unset;
+                
                 flex-direction: row;
                 height: unset;
+                padding-top: 15px;
                 padding-right: 50px;
+                padding-bottom: 20px;
+                margin-top: unset;
                 justify-content: flex-end;
+                background-color: transparent;
                 li { opacity: 1;}
                 li,
                 a {

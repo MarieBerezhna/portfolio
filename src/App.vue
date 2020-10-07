@@ -80,9 +80,9 @@
   }
 
   section {
+    min-height: 100vh;
     height: auto;
-    min-height: 80vh;
-    position: relative;
+    position: static;
   }
 
   /* width */

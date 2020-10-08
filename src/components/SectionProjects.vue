@@ -20,7 +20,7 @@
             </div>
             <div class="container">
                 <div class="dots-wrapper row position-relative">
-                    <div class="col text-center">
+                    <div class="col text-center mt-3">
 
                         <span v-for="project in this.$store.state.projects" :key="project.id">
                             <span :class="{active: project.id === 0}" :item="project.id" class="dot"

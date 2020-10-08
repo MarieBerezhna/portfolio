@@ -18,10 +18,8 @@
             </div>
             <ul>
                 <li v-for="sec in sections" :key="sec.id" class="nav-link">
-                    <MenuLink  :name="sec.name.toUpperCase()" 
-                    :href="'#' + sec.name.toLowerCase()"   
-                    :class="{active: sec.id === 0}"
-                    />
+                    <MenuLink :name="sec.name.toUpperCase()" :href="'#' + sec.name.toLowerCase()"
+                        :class="{active: sec.id === 0}" />
                 </li>
             </ul>
         </nav>
@@ -29,7 +27,7 @@
 </template>
 
 <script>
-import $ from 'jquery'
+    import $ from 'jquery'
     export default {
         name: 'MainMenu',
         components: {
@@ -38,7 +36,7 @@ import $ from 'jquery'
         props: {
             sections: Array
         },
-        data () {
+        data() {
             return {
                 scrolled: false
             }
@@ -48,17 +46,39 @@ import $ from 'jquery'
                 $('.close').on('click', () => {
                     $('.close').hide()
                     $('.open').delay(400).show()
-                    $('nav ul').animate({left: '100vw'}, 200)
+                    $('nav ul').animate({
+                        left: '100vw'
+                    }, 200)
                 })
                 $('.open').on('click', () => {
                     $('.open').hide()
                     $('.close').css('display', 'flex')
-                    $('nav ul').animate({left: 0}, 250)
+                    $('nav ul').animate({
+                        left: 0
+                    }, 250)
+                })
+            },
+            menuActivateSwitch: function () {
+                let mainNavLinks = $(".nav-link");
+                $('html, body').on('scroll', () => {
+                     let fromTop = $("body").scrollTop() + 300;
+                    $(mainNavLinks).each((el) => {
+                        let item = $(mainNavLinks[el]).find('a')[0]
+                        let hash = $(item).attr('href')
+                        let section = document.querySelector(hash);
+                        if (    section.offsetTop <= fromTop &&
+                                section.offsetTop + section.offsetHeight > fromTop) {
+                            $(item).addClass("active");
+                        } else {
+                            $(item).removeClass("active");
+                        }
+                    })
                 })
             }
         },
-        mounted () {
+        mounted() {
             this.menuToggle()
+            this.menuActivateSwitch()
         }
     }
 </script>
@@ -80,7 +100,8 @@ import $ from 'jquery'
         justify-content: space-between;
         align-items: center;
 
-        .open, .close {
+        .open,
+        .close {
             position: relative;
             top: 25px;
         }
@@ -131,6 +152,7 @@ import $ from 'jquery'
                 }
             }
         }
+
         .close {
             display: none;
             background-color: transparent;
@@ -148,6 +170,7 @@ import $ from 'jquery'
         background-color: rgba(0, 0, 0, 0.9);
         width: calc(100% - 12px);
         z-index: 11;
+
         ul {
             position: fixed;
             left: 100vw;
@@ -169,9 +192,11 @@ import $ from 'jquery'
         .header-right {
             display: none;
         }
+
         nav {
-              height: 80px;
+            height: 80px;
             max-height: 80px;
+
             ul {
                 position: unset;
                 flex-direction: row;
@@ -182,7 +207,11 @@ import $ from 'jquery'
                 margin-top: unset;
                 justify-content: flex-end;
                 background-color: transparent;
-                li { opacity: 1;}
+
+                li {
+                    opacity: 1;
+                }
+
                 li,
                 a {
                     margin: 1% 10px;

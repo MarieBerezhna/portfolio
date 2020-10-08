@@ -24,7 +24,6 @@ const Helper = {
           if (pView.right <= wView.right && pView.left >= wView.left) return true;
           
           return false;
-
     };
   },
 };

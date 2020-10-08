@@ -14,8 +14,8 @@
 
           <h1>Hello! <br> I'm <span :style="'color:' + $store.state.primary_color">Marie</span>,</h1>
           <p>Front End Developer</p>
-          <span @click="getInTouch()">
-            <MainButton text="Get In Touch" />
+          <span>
+            <MainButton text="Get In Touch" :href="'#contact'"/>
           </span>
           
         </div>
@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
   export default {
     name: 'HelloWorld',
     components: {
@@ -49,13 +48,6 @@ import $ from 'jquery'
       ParticlesBall: () => import('@/components/art/ParticlesBall.vue')
     },
     methods: {
-      getInTouch() {
-        console.log('here')
-        let form = $('#contactform').parent()
-        let copy = $(form).clone()
-        let html = $(copy).html()
-        this.showModal("Contact", html)
-      },
       boxHover(e) {
         e.stopPropagation()
         let primary = this.$store.state.primary_color
@@ -66,7 +58,6 @@ import $ from 'jquery'
           item.style.backgroundColor = e.type === 'mouseenter' ? primary : secondary
           item.style.color = e.type === 'mouseenter' ? secondary : '#fff'
          hr.style.backgroundColor = e.type === 'mouseenter' ? "#343a40" : '#fff' 
-
         }
       }
     },

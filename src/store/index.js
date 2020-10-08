@@ -9,7 +9,7 @@ const Helper = {
       $('.modal').find('.modal-body p').html(content);
       $('.modal').fadeIn();
     };
-    Vue.prototype.checkVisible = (selector, index) => {
+    Vue.prototype.checkVisibleX = (selector, index) => {
           const el = $(selector)[index];
           const win = $(window)[0];
           const wView = {
@@ -34,15 +34,19 @@ export default new Vuex.Store({
     primary_color: '#5BFFAA',
     secondary_color: '#3B3B3B',
     sections: [{
+        id: 0,
         name: 'Home'
       },
       {
+        id: 1,
         name: 'Skills'
       },
       {
+        id:2,
         name: 'Projects'
       },
       {
+        id: 3,
         name: 'Contact'
       }
     ],

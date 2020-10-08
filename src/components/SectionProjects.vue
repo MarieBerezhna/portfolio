@@ -1,8 +1,8 @@
 <template>
     <div>
-        <section id="projects">
+        <section id="projects" class="my-5 pt-4">
             <MainHeading text="Projects" />
-            <div class="container-fluid mt-3 mb-5 p-0" @touchend="onScroll($event)">
+            <div class="container-fluid mt-3 p-0">
                 <div class="row projects-wrapper">
                     <div class="project position-relative"
                         :style="'background-image: url(' + require('../assets/projects/' + project.img)"
@@ -51,10 +51,10 @@
                 $('.projects-wrapper').width(num * width)
                 // add a dot for each offscreen item
                 $('.project').each(function (el) {
-                    let visible = vm.checkVisible($('.project'), el)
-                    let dot = $('.dot')[el]
+                    let visible = vm.checkVisibleX($('.project'), el)
+                    let last = $('.dot')[$('.dot').length -1]
                     if (visible && el > 0) {
-                        $(dot).remove()
+                        $(last).parent().remove()
                     }
                 })
                 let styles = `<style>
@@ -68,37 +68,16 @@
             },
             dotClick(e) {
                 const current = $('.dot.active');
-                const cIdx = $('.dot').index('.active')
-                const tIdx = $('.dot').index(e.target)
+                const cIdx = $('.dot.active').attr('item')
+                const tIdx = $(e.target).attr('item')
                 let dist = $('.project').width()
-                dist = dist * (tIdx - cIdx)
-                let direction = cIdx >= 0 ? '-=' : '+='
-                $('.project').delay(500).animate({
+                dist = dist * Math.abs(tIdx - cIdx)
+                let direction = tIdx > cIdx ? '-=' : '+='
+                $('.project').delay(200).animate({
                     left: direction + dist
                 })
                 $(current).removeClass('active')
                 $(e.target).addClass('active')
-            },
-            onScroll(e) {
-                if (e.cancelable) {
-                    e.preventDefault();
-                }
-                setTimeout(function () {
-                    if (!this.scrolled) {
-                        const unit = $('.project').width()
-                        let cOffset = $(e.target).parent('.projects-wrapper').position().left
-                        cOffset = Math.abs(cOffset)
-                        let dist = cOffset % unit
-                        console.log(dist)
-                        let direction = dist >= unit / 2 ? '-=' : '+='
-                        $('.project').delay(250).animate({
-                            left: direction + dist
-                        })
-                        this.scrolled = true
-                    }
-
-                    this.scrolled = false
-                }, 800)
             }
         },
         mounted() {

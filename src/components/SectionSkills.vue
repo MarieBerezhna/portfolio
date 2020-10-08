@@ -1,10 +1,10 @@
 <template>
   <div>
-    <section id="skills">
+    <section id="skills" class="my-5 pt-4">
       <MainHeading text="Skills" />
       <ParticlesBall v-if="window.outerWidth < 992" style="height: 40vh" />
 
-      <div class="container mt-3 mb-5 text-center position-relative">
+      <div class="container mt-3 text-center position-relative">
         <div class="row py-4 skillset mx-auto" v-for="(skillset, key) in this.$store.state.skills" :key="key">
           <h4 class="col-12 my-4 pb-3">
             {{ key.toUpperCase().split('_').join(' ') }}

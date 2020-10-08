@@ -17,8 +17,11 @@
                 </button>
             </div>
             <ul>
-                <li v-for="sec in sections" :key="sec.name" class="nav-link">
-                    <MenuLink  :name="sec.name.toUpperCase()" :href="'#' + sec.name.toLowerCase()"   />
+                <li v-for="sec in sections" :key="sec.id" class="nav-link">
+                    <MenuLink  :name="sec.name.toUpperCase()" 
+                    :href="'#' + sec.name.toLowerCase()"   
+                    :class="{active: sec.id === 0}"
+                    />
                 </li>
             </ul>
         </nav>
@@ -55,7 +58,6 @@ import $ from 'jquery'
             }
         },
         mounted () {
-            window.HTMLElement.prototype.scrollIntoView = function() {};
             this.menuToggle()
         }
     }
@@ -82,6 +84,7 @@ import $ from 'jquery'
             position: relative;
             top: 25px;
         }
+
         .open {
             position: relative;
             width: 24px;
@@ -158,6 +161,7 @@ import $ from 'jquery'
             background-color: rgba(0, 0, 0, 0.9);
             height: calc(100vh - 80px);
             padding-left: 0;
+
         }
     }
 
@@ -170,7 +174,6 @@ import $ from 'jquery'
             max-height: 80px;
             ul {
                 position: unset;
-                
                 flex-direction: row;
                 height: unset;
                 padding-top: 15px;

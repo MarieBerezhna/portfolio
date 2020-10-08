@@ -1,8 +1,8 @@
 <template>
     <div>
-        <section id="contact">
+        <section id="contact" class="my-5 pt-4">
             <MainHeading text="Contact" />
-            <div class="container my-5">
+            <div class="container">
                 <div class="row mx-auto ">
                     <div class="col-12 col-md-6 offset-md-3"
                         :style="'background-color: '+ this.$store.state.secondary_color">

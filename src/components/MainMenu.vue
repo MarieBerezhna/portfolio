@@ -36,11 +36,6 @@
         props: {
             sections: Array
         },
-        data() {
-            return {
-                scrolled: false
-            }
-        },
         methods: {
             menuToggle: function () {
                 $('.close').on('click', () => {

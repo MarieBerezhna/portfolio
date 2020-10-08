@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section id="contact" class="my-5 pt-4">
+        <section id="contact" class="my-1 pt-4" style="min-height: unset">
             <MainHeading text="Contact" />
             <div class="container">
                 <div class="row mx-auto ">

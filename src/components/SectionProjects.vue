@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section id="projects" class="my-5 pt-4">
+        <section id="projects" class="my-1 pt-4">
             <MainHeading text="Projects" />
             <div class="container-fluid mt-3 p-0">
                 <div class="row projects-wrapper">
@@ -55,6 +55,9 @@
                     let last = $('.dot')[$('.dot').length -1]
                     if (visible && el > 0) {
                         $(last).parent().remove()
+                    } else {
+                        let item = $('.project')[el]
+                        $(item).addClass('init-hidden')
                     }
                 })
                 let styles = `<style>
@@ -78,10 +81,24 @@
                 })
                 $(current).removeClass('active')
                 $(e.target).addClass('active')
+            },
+            activeDots: function () {
+            let vm = this;
+            $('.container-fluid').on('scroll', function () {
+                let hiddens = $('.init-hidden');
+                $(hiddens).each((el)=> {
+                    let inView = vm.checkVisibleX($('.init-hidden'), el)
+                    if (inView) {
+                        $('.dot.active').removeClass('active')
+                        $('.dot[item="'+ el +'"]').addClass('active')
+                    }
+                })
+            })
             }
         },
         mounted() {
             this.setStyles()
+            this.activeDots()
         }
     }
 </script>

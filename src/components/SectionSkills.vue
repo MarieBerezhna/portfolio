@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section id="skills" class="my-5 pt-4">
+    <section id="skills" class="my-1 pt-4">
       <MainHeading text="Skills" />
       <ParticlesBall v-if="window.outerWidth < 992" style="height: 40vh" />
 
@@ -10,7 +10,7 @@
             {{ key.toUpperCase().split('_').join(' ') }}
           </h4>
 
-          <div v-for="skill in skillset" :key="skill.id" class="col skill text-center mx-2 hideme">
+          <div v-for="skill in skillset" :key="skill.id" class="col skill text-center hideme">
             <img :src="require('../assets/png/skills/' + skill.name.toLowerCase() + '.png')" :alt="skill.name">
             <p>{{ skill.name }}</p>
           </div>
@@ -41,8 +41,7 @@
           /* If the object is completely visible in the window, fade it in */
           if (bottom_of_window > bottom_of_object) {
             $(this).css({
-              opacity: 1,
-              height: 'unset'
+              opacity: 1
             })
           }
 
@@ -61,7 +60,7 @@
 <style lang="scss" scoped>
   .hideme {
     opacity: 0;
-    height: 0;
+    // height: 0;
   }
 
   .container {

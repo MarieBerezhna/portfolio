@@ -52,7 +52,7 @@
                 // add a dot for each offscreen item
                 $('.project').each(function (el) {
                     let visible = vm.checkVisibleX($('.project'), el)
-                    let last = $('.dot')[$('.dot').length -1]
+                    let last = $('.dot')[$('.dot').length - 1]
                     if (visible && el > 0) {
                         $(last).parent().remove()
                     } else {
@@ -76,24 +76,24 @@
                 let dist = $('.project').width()
                 dist = dist * Math.abs(tIdx - cIdx)
                 let direction = tIdx > cIdx ? '-=' : '+='
-                $('.project').delay(200).animate({
+                $('.project').animate({
                     left: direction + dist
-                })
+                },100)
                 $(current).removeClass('active')
                 $(e.target).addClass('active')
             },
             activeDots: function () {
-            let vm = this;
-            $('.container-fluid').on('scroll', function () {
-                let hiddens = $('.init-hidden');
-                $(hiddens).each((el)=> {
-                    let inView = vm.checkVisibleX($('.init-hidden'), el)
-                    if (inView) {
-                        $('.dot.active').removeClass('active')
-                        $('.dot[item="'+ el +'"]').addClass('active')
-                    }
+                let vm = this;
+                $('.container-fluid').on('scroll', function () {
+                    let hiddens = $('.init-hidden');
+                    $(hiddens).each((el) => {
+                        let inView = vm.checkVisibleX($('.init-hidden'), el)
+                        if (inView) {
+                            $('.dot.active').removeClass('active')
+                            $('.dot[item="' + el + '"]').addClass('active')
+                        }
+                    })
                 })
-            })
             }
         },
         mounted() {
@@ -130,22 +130,18 @@
     .container-fluid::-webkit-scrollbar {
         display: none;
     }
-
     .project {
         padding: 0 !important;
         height: 100vw;
         width: 100vw;
-    }
-
-    .project {
         background-size: 100%;
         background-position: center;
         background-repeat: no-repeat;
-        transition: all 2s ease-in;
-        -moz-transition: all 2s ease-in;
-        -ms-transition: all 2s ease-in;
-        -o-transition: all 2s ease-in;
-        -webkit-transition: all 2s ease-in;
+        transition: all 0.5s ease-out;
+        -moz-transition: all 0.5s ease-out;
+        -ms-transition: all 0.5s ease-out;
+        -o-transition: all 0.5s ease-out;
+        -webkit-transition: all 0.5s ease-out;
 
         .cover,
         .content,

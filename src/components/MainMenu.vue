@@ -17,7 +17,7 @@
                 </button>
             </div>
             <ul>
-                <li v-for="sec in sections" :key="sec.name" class="nav-link" @click="menuClick($event)">
+                <li v-for="sec in sections" :key="sec.name" class="nav-link">
                     <MenuLink  :name="sec.name.toUpperCase()" :href="'#' + sec.name.toLowerCase()"   />
                 </li>
             </ul>
@@ -52,16 +52,6 @@ import $ from 'jquery'
                     $('.close').css('display', 'flex')
                     $('nav ul').animate({left: 0}, 250)
                 })
-            },
-            menuClick: function (e) {
-                const element = $(e.target.hash).parent();
-                 $('html, body').animate({
-                    scrollTop: 0
-                },10);
-                $('html, body').delay(20).animate({
-                    scrollTop: $(element).offset().top
-                },200);
-                return false;
             }
         },
         mounted () {

@@ -95,30 +95,33 @@
                     $('#email').val('');
                     $('#message').val('');
                     $("input").css("box-shadow", "none");
-                }
 
-                if (window.location.host.indexOf('localhost') !== -1) {
+                    if (window.location.host.indexOf('localhost') !== -1) {
 
-                    this.showModal('Message sent!',
-                        '<h4 class="pt-1">Thank you, ' + name +
-                        '. The message was successfully sent.</h4><hr>')
+                        this.showModal('Message sent!',
+                            '<h4 class="pt-1">Thank you, ' + name +
+                            '. The message was successfully sent.</h4><hr>')
+                    } else {
+                        const app = this;
+                        $.post("/contact.php", {
+                                name: name,
+                                email: email,
+                                message: message
+                            },
+                            function (data) {
+                                app.showModal('Message sent!', data)
+                            });
+                    }
                 } else {
-                    const app = this;
-                    $.post("/contact.php", {
-                            name: name,
-                            email: email,
-                            message: message
-                        },
-                        function (data) {
-                            app.showModal('Message sent!', data)
-                        });
+                    $('input').blur()
                 }
+
+
 
 
                 return false;
             },
             contactSet() {
-                const color = this.$store.state.primary_color;
                 var Contact = (function () {
 
                     var reg, the_value, the_id;
@@ -132,7 +135,6 @@
                             if (reg.test(the_value)) {
 
                                 $(this).css({
-                                    "box-shadow": "1px 1px 2px 4px " + color,
                                     background: 'transparent'
                                 });
                                 $("#" + the_id + "_error").css({
@@ -141,24 +143,19 @@
 
                             } else {
 
-                                $(this).css({
-                                    "box-shadow": "1px 1px 2px 4px red"
-                                });
-
                                 if (the_id == "tel") {
                                     $("#" + the_id + "_error").css({
-                                        color: "red"
+                                        color: "#f56c62"
                                     }).html("Please, enter a valid phone number");
                                 } else {
                                     $("#" + the_id + "_error").css({
-                                        color: "red"
+                                        color: "#f56c62"
                                     }).html("Please, enter a valid " + the_id);
                                 }
                             }
 
                         });
                         $("input").focus(function () {
-                            $(this).css("box-shadow", "none");
                             $("#" + the_id + "_error").css({
                                 color: "transparent"
                             });

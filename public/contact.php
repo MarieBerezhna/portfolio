@@ -47,6 +47,8 @@ if (($name != NULL) && ($email != NULL)) {
 	}
 	
 		mail($mail_to, $subject, $email_message);	
-} 
+} else {
+	echo '<hr><h4 class="pt-1">Sorry, something went wrong... Please, try again later!</h4><hr>';
+}
 
 ?>

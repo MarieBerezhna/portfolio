@@ -179,7 +179,9 @@
             background-color: rgba(0, 0, 0, 0.9);
             height: calc(100vh - 80px);
             padding-left: 0;
-
+            a {
+                font-size: 2rem;
+            }
         }
     }
 
@@ -210,6 +212,7 @@
                 li,
                 a {
                     margin: 1% 10px;
+                    font-size: 1rem;
                 }
             }
         }

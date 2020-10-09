@@ -151,6 +151,7 @@
             -ms-transition: all 0.5s ease-in;
             -o-transition: all 0.5s ease-in;
             -webkit-transition: all 0.5s ease-in;
+            font-weight: 600;
         }
 
         &:hover {

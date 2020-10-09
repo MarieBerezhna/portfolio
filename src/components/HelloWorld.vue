@@ -23,7 +23,8 @@
       <div class="container-fluid  d-flex justify-content-end">
         <div class="row col-md-10">
 
-          <div v-for="box in this.$store.state.boxes" :key="box.id" class="infobox-outer col-12 col-md-4 my-5 my-md-1">
+          <div v-for="box in this.$store.state.boxes" :key="box.id" 
+          class="infobox-outer col-12 col-md-4 my-5 my-md-1">
             <div class="infobox text-center mb-5" @mouseenter="boxHover" @mouseleave="boxHover"
               :class="{highlighted: box.highlighted}">
               <div class="img mx-auto">
@@ -84,7 +85,7 @@
 <style lang="scss" scoped>
   #profile-image {
     padding-left: 0;
-    height: 100vh;
+    height: 85vh;
     width: 100%;
     background-image: url(../assets/grey.jpg);
     background-size: 120%;
@@ -93,11 +94,13 @@
   }
 
   .greet {
-    top: 45vh;
+    top: 35vh;
     animation-duration: 3s;
     animation-name: slidein;
   }
-
+  .infobox-outer:first-child {
+    margin-top: 0 !important;
+  } 
   .infobox-outer {
     position: relative;
     color: #fff;
@@ -135,13 +138,14 @@
 
   @media (min-width: 992px) {
     #profile-image {
+      height: 100vh;
       background-size: 90%;
       background-position: left;
     }
 
     .greet {
       left: 45vw;
-
+      top: 45vh;
     }
 
     .infobox {

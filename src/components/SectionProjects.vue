@@ -168,7 +168,7 @@
                     font-size: unset;
 
                     h5 {
-                        font-size: 3rem;
+                        font-size: 2rem;
                     }
                 }
             }
@@ -206,6 +206,9 @@
         .project {
             width: 33.33vw;
             height: 33vw;
+            &:hover .content h5 {
+                font-size: 3rem !important;
+            }
         }
     }
 </style>

@@ -174,20 +174,21 @@ export default new Vuex.Store({
         url: 'https://github.com/MarieBerezhna'
       }
     ],
-    projects: [{
+    projects: [
+        {
         id: 0,
-        name: 'Tomatick',
-        url: 'https://tomatick.webmarie.com',
-        img: 'tomatick.jpg',
-        description: 'Pomodoro clock',
+        name: 'Eli`s Pub',
+        url: 'https://pprojects.webmarie.com/elispub/',
+        img: 'elispub.jpg',
+        description: 'Local Live Music Pub',
         tags: []
       },
       {
         id: 1,
-        name: 'Polina Poliakova',
-        url: 'https://polinapoliakova.com',
-        img: 'polina.jpg',
-        description: 'Digital Artist Intro',
+        name: 'Tomatick',
+        url: 'https://tomatick.webmarie.com',
+        img: 'tomatick.jpg',
+        description: 'Pomodoro clock',
         tags: []
       },
       {
@@ -200,12 +201,19 @@ export default new Vuex.Store({
       },
       {
         id: 3,
-        name: 'Tomatick',
-        url: 'https://tomatick.webmarie.com',
-        img: 'tomatick.jpg',
-        description: 'Pomodoro clock',
+        name: 'DK Therapy',
+        url: 'https://dktherapy.co.il/',
+        img: 'dktherapy.jpg',
+        description: 'Massage Home Studio'
+      },
+      {
+        id: 4,
+        name: 'Polina Poliakova',
+        url: 'https://polinapoliakova.com',
+        img: 'polina.jpg',
+        description: 'Digital Artist Intro',
         tags: []
-      }
+      },
     ],
     footerlinks: [{
         id: 0,

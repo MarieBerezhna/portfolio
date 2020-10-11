@@ -4,9 +4,9 @@
             <MainHeading text="Projects" />
             <div class="container-fluid mt-3 p-0">
                 <div class="row projects-wrapper">
-                    <div class="project position-relative"
-                        :style="'background-image: url(' + require('../assets/projects/' + project.img)"
-                        v-for="project in this.$store.state.projects" :key="project.id">
+                    <div class="project position-relative" v-for="project in projects" :key="project.id"
+                        :id="project.id"
+                        :style="'background-image: url(' + require('../assets/projects/' + project.img)">
                         <div class="cover position-relative text-center">
                             <div class="content w-50 mx-auto">
                                 <h3 :style="'border-bottom: 3px solid' + 
@@ -14,7 +14,7 @@
                                 {{ project.name }}
                                 </h3>
                                 <p>{{ project.description }}</p>
-                                <MainButton text="Open" :href="project.url" />
+                                <MainButton text="Open" :href="project.url" target="_blank"/>
                             </div>
                         </div>
                     </div>
@@ -24,8 +24,8 @@
                 <div class="dots-wrapper row position-relative">
                     <div class="col text-center mt-3">
 
-                        <span v-for="project in this.$store.state.projects" :key="project.id">
-                            <span :class="{active: project.id === 0}" :item="project.id" class="dot"
+                        <span v-for="project in projects" :key="project.id">
+                            <span :class="{active: project.id === projects.length -1 }" :item="project.id" class="dot"
                                 @click="dotClick($event)"></span>
                         </span>
                     </div>
@@ -43,6 +43,11 @@
             MainHeading: () => import('@/components/utils/MainHeading.vue'),
             MainButton: () => import('@/components/utils/MainButton.vue')
         },
+        data () {
+            return {
+                projects: this.$store.state.projects.reverse()
+            }
+        },
         methods: {
             setStyles() {
                 const num = $('.project').length
@@ -54,9 +59,9 @@
                 // add a dot for each offscreen item
                 $('.project').each(function (el) {
                     let visible = vm.checkVisibleX($('.project'), el)
-                    let last = $('.dot')[$('.dot').length - 1]
+                    let spare = $('.dot')[$('.dot').length - 1]
                     if (visible && el > 0) {
-                        $(last).parent().remove()
+                        $(spare).parent().remove()
                     } else {
                         let item = $('.project')[el]
                         $(item).addClass('init-hidden')
@@ -77,22 +82,23 @@
                 const tIdx = $(e.target).attr('item')
                 let dist = $('.project').width()
                 dist = dist * Math.abs(tIdx - cIdx)
-                let direction = tIdx > cIdx ? '-=' : '+='
+                let direction = tIdx > cIdx ? '+=' : '-='
                 $('.project').animate({
                     left: direction + dist
                 },100)
                 $(current).removeClass('active')
                 $(e.target).addClass('active')
             },
-            activeDots: function () {
-                let vm = this;
+            activeDots: function () { //bug
                 $('.container-fluid').on('scroll', function () {
-                    let hiddens = $('.init-hidden');
-                    $(hiddens).each((el) => {
-                        let inView = vm.checkVisibleX($('.init-hidden'), el)
-                        if (inView) {
+                    $('.project').each((el) => {
+                        let item =$('.project')[el]
+                        let winSide = window.innerWidth - $(item).width() / 2
+                        let itemSide = $(item).position().left   
+                        if ( itemSide >= 0 && itemSide < winSide) {
+                            let dot = $('.dot[item="'+  $(item).attr('id') +'"]')
                             $('.dot.active').removeClass('active')
-                            $('.dot[item="' + el + '"]').addClass('active')
+                            $(dot).addClass('active')
                         }
                     })
                 })

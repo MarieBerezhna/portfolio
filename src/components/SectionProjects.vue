@@ -9,8 +9,10 @@
                         v-for="project in this.$store.state.projects" :key="project.id">
                         <div class="cover position-relative text-center">
                             <div class="content w-50 mx-auto">
-                                <h5 :style="'border-bottom: 3px solid' + $store.state.primary_color">{{ project.name }}
-                                </h5>
+                                <h4 :style="'border-bottom: 3px solid' + 
+                                $store.state.primary_color" class="p-heading">
+                                {{ project.name }}
+                                </h4>
                                 <p>{{ project.description }}</p>
                                 <MainButton text="Open" :href="project.url" />
                             </div>
@@ -145,7 +147,7 @@
 
         .cover,
         .content,
-        h5 {
+        .p-heading {
             transition: all 0.5s ease-in;
             -moz-transition: all 0.5s ease-in;
             -ms-transition: all 0.5s ease-in;

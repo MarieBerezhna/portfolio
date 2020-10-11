@@ -22,7 +22,7 @@
 
         </div>
             <div class="col-12 col-md-6 py-4 text-center">
-                <h4>I'm also:</h4>
+                <h4 style="font-weight: 400;">I'm also:</h4>
                 
                 <div class="skillbox p-4 my-3" v-for="item in this.$store.state.extraskills" :key="item.id"
                 :style="'background-color:' + $store.state.primary_color + 

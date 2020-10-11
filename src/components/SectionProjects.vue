@@ -170,7 +170,7 @@
                     opacity: 1;
                     font-size: unset;
 
-                    h5 {
+                    .p-heading {
                         font-size: 2rem;
                     }
                 }
@@ -189,7 +189,7 @@
                 opacity: 0;
                 font-size: 0;
 
-                h5 {
+                .p-heading {
                     font-size: 0;
                 }
             }
@@ -209,7 +209,7 @@
         .project {
             width: 33.33vw;
             height: 33vw;
-            &:hover .content h5 {
+            &:hover .content .p-heading {
                 font-size: 3rem !important;
             }
         }

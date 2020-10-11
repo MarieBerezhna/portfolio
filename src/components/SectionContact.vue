@@ -33,8 +33,11 @@
                 </div>
                 <div class="row">
                     <div class="icons-row col-12 col-md-6 mx-auto mt-4">
-                        <a class="icon-wrap mx-auto position-relative" style="color: #fff" :href="icon.url"
-                            target="_blank" @mouseenter="iconHover($event)" @mouseleave="iconHover($event)"
+                        <a class="icon-wrap mx-auto position-relative" 
+                            rel="noopener noreferrer"
+                            style="color: #fff" :href="icon.url"
+                            target="_blank" @mouseenter="iconHover($event)" 
+                            @mouseleave="iconHover($event)"
                             :style="'border: 1px solid '+ $store.state.primary_color"
                             v-for="(icon, index) in this.$store.state.social_icons" :key="index" :index="index">
                             <font-awesome-icon :icon="['fab', icon.name]" class="mx-auto my-auto" />

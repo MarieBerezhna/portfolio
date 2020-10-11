@@ -15,7 +15,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="email" class="col-form-label"></label>
-                                <input id="email" name="email" type="text" placeholder="Your e-mail address"
+                                <input id="email" name="email" type="email" placeholder="Your e-mail address"
                                     pattern="^(.+)@(.+){2,}\.(.+){2,}$" required><br>
                                 <span id="email_error"> <br></span>
                             </div>

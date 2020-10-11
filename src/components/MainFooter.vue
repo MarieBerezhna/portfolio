@@ -13,6 +13,7 @@
                     <div class="col-md-6 col-12 order-md-0">
                         <p>Made with
                             <a href="https://vuejs.org/" rel="noopener noreferrer" target="_blank"
+                                aria-label="Vue"
                                 :style="'color:' + $store.state.primary_color">Vue.js</a> &amp; <span>Love</span>
                         </p>
                         <p>Copyleft &copy; WebMarie 2020</p>

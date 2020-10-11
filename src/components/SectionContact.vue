@@ -23,7 +23,6 @@
                                 <label for="message"></label>
                                 <textarea @keypress="expandTextarea($event)" id="message" name="message" rows="1"
                                     cols="22" placeholder="Your message:"></textarea>
-
                             </div>
                             <MainButton text="Submit" id="contact_submit" @click.native="contactSubmit()"
                                 class="mb-5" />
@@ -34,7 +33,7 @@
                 <div class="row">
                     <div class="icons-row col-12 col-md-6 mx-auto mt-4">
                         <a class="icon-wrap mx-auto position-relative" 
-                            rel="noopener noreferrer"
+                            rel="noopener noreferrer" :aria-label="icon.name"
                             style="color: #fff" :href="icon.url"
                             target="_blank" @mouseenter="iconHover($event)" 
                             @mouseleave="iconHover($event)"

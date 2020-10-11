@@ -4,17 +4,35 @@
       <MainHeading text="Skills" />
       <ParticlesBall v-if="window.outerWidth < 992" style="height: 40vh" />
 
-      <div class="container mt-3 text-center position-relative">
-        <div class="row py-4 skillset mx-auto" v-for="(skillset, key) in this.$store.state.skills" :key="key">
-          <h4 class="col-12 my-4 pb-3">
-            {{ key.toUpperCase().split('_').join(' ') }}
-          </h4>
+      <div class="container mt-3 position-relative">
+        <div class="row">
+        <div class="col-12 col-md-6" >
+           <div class="skillset py-4 " v-for="(skillset, key) in this.$store.state.coreskills" :key="key">
+            <h4 class="my-4 pb-3 text-center text-md-left">
+              {{ key.toUpperCase().split('_').join(' ') }}
+            </h4>
+            <div class="row">
+              <div v-for="skill in skillset" :key="skill.id" 
+              class="col-3 skill text-center hideme mx-auto mx-md-0">
+                <img :src="require('../assets/png/skills/' + skill.name.toLowerCase() + '.png')" :alt="skill.name">
+                <p>{{ skill.name }}</p>
+              </div>
+            </div>
+           </div>
 
-          <div v-for="skill in skillset" :key="skill.id" class="col skill text-center hideme">
-            <img :src="require('../assets/png/skills/' + skill.name.toLowerCase() + '.png')" :alt="skill.name">
-            <p>{{ skill.name }}</p>
-          </div>
         </div>
+            <div class="col-12 col-md-6 py-4 text-center">
+                <h5>I'm also:</h5>
+                
+                <div class="skillbox p-4 my-3" v-for="item in this.$store.state.extraskills" :key="item.id"
+                :style="'background-color:' + $store.state.primary_color + 
+                '; border: 5px solid '+ $store.state.secondary_color +
+                '; text-align:left; color: black; font-size: 1.2rem'">
+                  {{ item.text}}
+
+                </div>
+          </div>
+          </div>
       </div>
     </section>
   </div>
@@ -50,6 +68,7 @@
     },
     mounted() {
       document.body.addEventListener('scroll', this.showOnScroll)
+
     },
     destroyed() {
       document.body.removeEventListener('scroll', this.showOnScroll)
@@ -60,7 +79,6 @@
 <style lang="scss" scoped>
   .hideme {
     opacity: 0;
-    // height: 0;
   }
 
   .container {

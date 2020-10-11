@@ -10,20 +10,20 @@ const Helper = {
       $('.modal').fadeIn();
     };
     Vue.prototype.checkVisibleX = (selector, index) => {
-          const el = $(selector)[index];
-          const win = $(window)[0];
-          const wView = {
-              left: $(win).scrollLeft(),
-              right: $(win).scrollLeft() + $(win).width()
-          };
-          const pView = {
-              left: $(el).position().left,
-              right: $(el).position().left + $(el).width()
-          };
-          
-          if (pView.right <= wView.right && pView.left >= wView.left) return true;
-          
-          return false;
+      const el = $(selector)[index];
+      const win = $(window)[0];
+      const wView = {
+        left: $(win).scrollLeft(),
+        right: $(win).scrollLeft() + $(win).width()
+      };
+      const pView = {
+        left: $(el).position().left,
+        right: $(el).position().left + $(el).width()
+      };
+
+      if (pView.right <= wView.right && pView.left >= wView.left) return true;
+
+      return false;
     };
   },
 };
@@ -41,7 +41,7 @@ export default new Vuex.Store({
         name: 'Skills'
       },
       {
-        id:2,
+        id: 2,
         name: 'Projects'
       },
       {
@@ -81,7 +81,7 @@ export default new Vuex.Store({
         `
       }
     ],
-    skills: {
+    coreskills: {
       markup_and_layout: [{
           id: 0,
           name: 'HTML',
@@ -103,7 +103,7 @@ export default new Vuex.Store({
           icon: ''
         }
       ],
-      client_side_programming: [{
+      client_side: [{
           id: 0,
           name: 'JS'
         },
@@ -130,6 +130,29 @@ export default new Vuex.Store({
         }
       ]
     },
+    extraskills: [{
+        id: 0,
+        text: `Competent at working with design prototypes made in Figma and AdobeXD and
+              capable of getting along with other design tools. 
+              Have an eye for good design and following best practicies.`
+      },
+      {
+        id: 1,
+        text: `Knowledgeable about mobile-first development strategy, SEO, 
+              and perfomance optimization main principles.`
+      },
+      {
+        id: 2,
+        text: `Acquanted with Wordpress, cPanel interface and Linux environment.
+              Not afraid of command line and dealing with server issues.`
+
+      },
+      {
+        id: 3,
+        text: `Speaking English, Hebrew, Russian and Ukrainian. 
+                Currently obsessed with learning German.`
+      }
+    ],
     social_icons: [{
         name: 'facebook-f',
         url: 'https://www.facebook.com/WebMarieCreative'

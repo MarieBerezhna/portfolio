@@ -28,7 +28,8 @@
             <div class="infobox text-center mb-5" @mouseenter="boxHover" @mouseleave="boxHover"
               :class="{highlighted: box.highlighted}">
               <div class="img mx-auto">
-                <img class="img w-25 my-3 my-md-4" :src="require('../assets/png/' + box.icon)" :alt="box.title">
+                <img class="img my-3 my-md-4" width="25%" height="25%"
+                :src="require('../assets/png/' + box.icon)" :alt="box.title">
               </div>
               <h2>{{ box.title }} </h2>
               <hr class="w-50" :class="{'bg-dark' : box.highlighted}">

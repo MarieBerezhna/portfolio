@@ -14,7 +14,9 @@
             <div class="row">
               <div v-for="skill in skillset" :key="skill.id" 
               class="col-6 col-md-3 skill text-center hideme mx-auto mx-md-0">
-                <img :src="require('../assets/png/skills/' + skill.name.toLowerCase() + '.png')" :alt="skill.name">
+                <img width="50" height="50"
+                :src="require('../assets/png/skills/' + skill.name.toLowerCase() + '.png')" 
+                :alt="skill.name">
                 <p>{{ skill.name }}</p>
               </div>
             </div>
@@ -22,7 +24,7 @@
 
         </div>
             <div class="col-12 col-md-6 py-4 text-center">
-                <h4 style="font-weight: 400;">I'm also:</h4>
+                <h4 style="font-weight: 400;font-family: 'AvantGarde Bold', Sans-serif;">I'm also:</h4>
                 
                 <div class="skillbox p-4 my-3" v-for="item in this.$store.state.extraskills" :key="item.id"
                 :style="'background-color:' + $store.state.primary_color + 
@@ -84,21 +86,5 @@
   .container {
     display: flex;
     flex-direction: column;
-
-    h4 {
-      font-family: "AvantGarde Bold", Sans-serif;
-      font-weight: 800;
-    }
-
-    img {
-      width: 30px;
-      z-index: 1;
-    }
-  }
-
-  @media (min-width: 992px) {
-    .container img {
-      width: 50px;
-    }
   }
 </style>

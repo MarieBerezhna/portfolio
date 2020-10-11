@@ -24,9 +24,11 @@
         <div class="row col-md-10">
 
           <div v-for="box in this.$store.state.boxes" :key="box.id" 
-          class="infobox-outer col-12 col-md-4 my-5 my-md-1">
+          class="infobox-outer col-12 col-md-4 my-5 my-md-1"
+          :class="[ window.innerWidth < 992 && box.highlighted ? 'margin-box-mob' : 'that']">
             <div class="infobox text-center mb-5" @mouseenter="boxHover" @mouseleave="boxHover"
-              :class="{highlighted: box.highlighted}">
+              :class="{highlighted: box.highlighted}"
+              >
               <div class="img mx-auto">
                 <img class="img my-3 my-md-4" width="25%" height="25%"
                 :src="require('../assets/png/' + box.icon)" :alt="box.title">
@@ -95,13 +97,13 @@
   }
 
   .greet {
-    top: 35vh;
+    top: 30vh;
     animation-duration: 3s;
     animation-name: slidein;
   }
-  .infobox-outer:first-child {
-    margin-top: 0 !important;
-  } 
+    .margin-box-mob {
+      margin-top: 0 !important;
+    }
   .infobox-outer {
     position: relative;
     color: #fff;

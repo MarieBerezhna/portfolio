@@ -3,7 +3,7 @@ import App from './App.vue';
 import Vuex from 'vuex';
 import store from './store';
 
-import "bootstrap";
+// import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';

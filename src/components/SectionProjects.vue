@@ -14,7 +14,7 @@
                                 {{ project.name }}
                                 </h3>
                                 <p>{{ project.description }}</p>
-                                <MainButton text="Open" :href="project.url" target="_blank"/>
+                                <MainButton text="Open" :href="project.url" rel="noopener noreferrer" target="_blank"/>
                             </div>
                         </div>
                     </div>

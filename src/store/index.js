@@ -178,7 +178,7 @@ export default new Vuex.Store({
         {
         id: 0,
         name: 'Eli`s Pub',
-        url: 'https://pprojects.webmarie.com/elispub/',
+        url: 'https://projects.webmarie.com/elispub/',
         img: 'elispub.jpg',
         description: 'Local Live Music Pub',
         tags: []
@@ -194,7 +194,7 @@ export default new Vuex.Store({
       {
         id: 2,
         name: 'Wheel Of Fortune',
-        url: '/wheel/',
+        url: 'https://projects.webmarie.com/wheel/',
         img: 'wheel.jpg',
         description: 'Spinner game with HTML5 Canvas',
         tags: []

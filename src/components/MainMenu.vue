@@ -56,13 +56,13 @@
             menuActivateSwitch: function () {
                 let mainNavLinks = $(".nav-link");
                 $('html, body').on('scroll', () => {
-                     let fromTop = $("body").scrollTop() + 300;
+                    let fromTop = $("body").scrollTop() + 300;
                     $(mainNavLinks).each((el) => {
                         let item = $(mainNavLinks[el]).find('a')[0]
                         let hash = $(item).attr('href')
                         let section = document.querySelector(hash);
-                        if (    section.offsetTop <= fromTop &&
-                                section.offsetTop + section.offsetHeight > fromTop) {
+                        if (section.offsetTop <= fromTop &&
+                            section.offsetTop + section.offsetHeight > fromTop) {
                             $(item).addClass("active");
                         } else {
                             $(item).removeClass("active");
@@ -80,10 +80,10 @@
 
 <style lang="scss" scoped>
     .logo {
-        width: 200px;
-        height: 100px;
+        width: 150px;
+        height: auto;
         position: fixed;
-        top: 0px;
+        top: 25px;
         left: 10px;
         z-index: 10;
     }
@@ -179,6 +179,7 @@
             background-color: rgba(0, 0, 0, 0.9);
             height: calc(100vh - 80px);
             padding-left: 0;
+
             a {
                 font-size: 2rem;
             }

@@ -8,9 +8,9 @@
         <div class="row">
         <div class="col-12 col-md-6" >
            <div class="skillset py-4 " v-for="(skillset, key) in this.$store.state.coreskills" :key="key">
-            <h4 class="my-4 pb-3 text-center text-md-left">
+            <h3 class="my-4 pb-3 text-center text-md-left">
               {{ key.toUpperCase().split('_').join(' ') }}
-            </h4>
+            </h3>
             <div class="row">
               <div v-for="skill in skillset" :key="skill.id" 
               class="col-6 col-md-3 skill text-center hideme mx-auto mx-md-0">

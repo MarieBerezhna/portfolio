@@ -13,7 +13,7 @@
             </h4>
             <div class="row">
               <div v-for="skill in skillset" :key="skill.id" 
-              class="col-3 skill text-center hideme mx-auto mx-md-0">
+              class="col-6 col-md-3 skill text-center hideme mx-auto mx-md-0">
                 <img :src="require('../assets/png/skills/' + skill.name.toLowerCase() + '.png')" :alt="skill.name">
                 <p>{{ skill.name }}</p>
               </div>

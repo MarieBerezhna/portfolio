@@ -7,22 +7,26 @@
                     <div class="col-12 col-md-5"
                         :style="'background-color: '+ this.$store.state.secondary_color">
                         <form id="contactform" action="/contact.php" method="POST" class="my-4 pt-md-4 mx-auto text-center">
-                            <div class="form-group">
-                                <label for="name" class=" w-100 col-form-label"></label>
+                            <div class="form-group"> 
+                                 <label for="name" class=" w-100 col-form-label">
                                 <input id="name" name="name" type="text" placeholder="Your name"
-                                    pattern="^[A-Za-z ]{2,35}$" required><br>
+                                pattern="^[A-Za-z ]{2,35}$" required>
+                               </label>
+                                <br>
                                 <span id="name_error"><br></span>
                             </div>
                             <div class="form-group">
-                                <label for="email" class="col-form-label"></label>
+                                <label for="email" class="col-form-label">
                                 <input id="email" name="email" type="email" placeholder="Your e-mail address"
-                                    pattern="^(.+)@(.+){2,}\.(.+){2,}$" required><br>
+                                    pattern="^(.+)@(.+){2,}\.(.+){2,}$" required>
+                                </label>
+                                    <br>
                                 <span id="email_error"> <br></span>
                             </div>
                             <div class="form-group">
-                                <label for="message"></label>
+                                <label for="message">
                                 <textarea @keypress="expandTextarea($event)" id="message" name="message" rows="1"
-                                    cols="22" placeholder="Your message:"></textarea>
+                                    cols="22" placeholder="Your message:"></textarea></label>
                             </div>
                             <MainButton text="Submit" id="contact_submit" @click.native="contactSubmit()"
                                 class="mb-5" />
@@ -30,9 +34,9 @@
                         <div id="msg"></div>
                     </div>
                     <div class="col-12 col-md-6 offset-md-1 text-center">
-                        <div class="w-50 w-md-25 mx-auto text-center">
+                        <div class="mx-auto text-center mt-5">
                             <img :src="require('../assets/profile.jpg')" alt="Marie Berezhna Resume" 
-                            class="img img-fluid rounded-circle">
+                            class="img rounded-circle" width="200" height="200">
                         </div>
                         <p>
                             By the way, I left my CV here. <br>
@@ -67,11 +71,6 @@
         components: {
             MainHeading: () => import('@/components/utils/MainHeading.vue'),
             MainButton: () => import('@/components/utils/MainButton.vue')
-        },
-        data() {
-            return {
-
-            }
         },
         methods: {
             expandTextarea(e) {
@@ -194,6 +193,9 @@
 </script>
 
 <style lang="scss" scoped>
+    label {
+        width: 100%;
+    }
     textarea {
         resize: none;
         height: auto

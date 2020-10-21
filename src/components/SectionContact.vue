@@ -2,11 +2,11 @@
     <div>
         <section id="contact" class="my-1 pt-4" style="min-height: unset">
             <MainHeading text="Contact" />
-            <div class="container">
+            <div class="container my-5">
                 <div class="row mx-auto ">
-                    <div class="col-12 col-md-6 offset-md-3"
+                    <div class="col-12 col-md-5"
                         :style="'background-color: '+ this.$store.state.secondary_color">
-                        <form id="contactform" action="/contact.php" method="POST" class="my-4 mx-auto text-center">
+                        <form id="contactform" action="/contact.php" method="POST" class="my-4 pt-md-4 mx-auto text-center">
                             <div class="form-group">
                                 <label for="name" class=" w-100 col-form-label"></label>
                                 <input id="name" name="name" type="text" placeholder="Your name"
@@ -29,8 +29,18 @@
                         </form>
                         <div id="msg"></div>
                     </div>
+                    <div class="col-12 col-md-6 offset-md-1 text-center">
+                        <div class="w-50 w-md-25 mx-auto text-center">
+                            <img :src="require('../assets/profile.jpg')" alt="Marie Berezhna Resume" 
+                            class="img img-fluid rounded-circle">
+                        </div>
+                        <p>
+                            By the way, I left my CV here. <br>
+                            Would you like to take a look? </p>
+                            <MainButton text="Open resume" href="cv.pdf" target="_blank" class="w-50" />
+                    </div>
                 </div>
-                <div class="row">
+                <div class="row my-3 my-md-5" :style="'border-top: 5px solid ' + this.$store.state.primary_color">
                     <div class="icons-row col-12 col-md-6 mx-auto mt-4">
                         <a class="icon-wrap mx-auto position-relative" 
                             rel="noopener noreferrer" :aria-label="icon.name"

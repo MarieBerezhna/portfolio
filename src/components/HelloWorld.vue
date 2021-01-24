@@ -13,7 +13,7 @@
         <div class="col-12 col-md-6 text-left my-md-auto greet position-absolute">
 
           <h1>Hello! <br> I'm <span :style="'color:' + $store.state.primary_color">Marie</span>,</h1>
-          <p>Front End Developer</p>
+          <p>JavaScript Developer</p>
           <span>
             <MainButton text="Get In Touch" :href="'#contact'"/>
           </span>

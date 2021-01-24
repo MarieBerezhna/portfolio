@@ -229,6 +229,27 @@ export default new Vuex.Store({
         description: 'Digital Artist Intro',
         tags: []
       },
+      {
+        id: 5,
+        name: 'Raffle landing page',
+        url: 'https://raffle.allstars-it.com',
+        img: 'raffle.jpg',
+        description: `Fullstack project (Node.js, ejs, Postgres). 
+        It collects data leaved by applicants and stores it to a dababase, from where 
+        it can be retrieved by admins`,
+        tags: []
+      },
+      {
+        id: 6,
+        name: 'Recycling bins map',
+        url: 'https://recmap.webmarie.com',
+        img: 'recmap.jpg',
+        description: `Fullstack project (Node.js, ejs, Postgres, Mapbox GL JS). 
+        Ongoing pet-project: an interactive map for those who cares about environment. 
+        The idea is to enable users report trash bins' locations in their city as well as report that the bin is missing.
+        I'm planning to gamify the experience and automate addition and deletion of the bins based on rating given by users.`,
+        tags: []
+      },
     ],
     footerlinks: [{
         id: 0,

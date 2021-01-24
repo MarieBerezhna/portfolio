@@ -103,7 +103,7 @@ export default new Vuex.Store({
           icon: ''
         }
       ],
-      client_side: [{
+      client_and_server_side: [{
           id: 0,
           name: 'JS'
         },
@@ -116,9 +116,14 @@ export default new Vuex.Store({
           id: 2,
           name: 'Vue.js',
           icon: ''
+        },
+        {
+          id: 3,
+          name: 'Node.js',
+          icon: ''
         }
       ],
-      version_control: [{
+      vcs_and_data_bases: [{
           id: 0,
           name: 'Git',
           icon: ''
@@ -126,6 +131,16 @@ export default new Vuex.Store({
         {
           id: 1,
           name: 'GitHub',
+          icon: ''
+        },
+        {
+          id: 2,
+          name: 'MySQL',
+          icon: ''
+        },
+        {
+          id: 2,
+          name: 'Postgres',
           icon: ''
         }
       ]

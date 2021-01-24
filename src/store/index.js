@@ -165,7 +165,7 @@ export default new Vuex.Store({
       {
         id: 3,
         text: `Speaking English, Hebrew, Russian and Ukrainian. 
-                Currently obsessed with learning German.`
+                Currently obsessed with learning Afrikaans.`
       }
     ],
     social_icons: [{

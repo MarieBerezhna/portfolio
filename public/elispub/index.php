@@ -644,7 +644,7 @@ pubs in the lower city, music bar, rock bar
             text-decoration: none;
           }
       </style>
-      <div>Created by <a id="devref" href="https://www.webmarie.co.il" target="_blanc">Webmarie</a> © 2019</div>
+      <div>Created by <a id="devref" href="https://webmarie.co.il" target="_blanc">Webmarie</a> © 2019</div>
 	</footer>
 	<!--SCRIPTS-->
 	<!--jQuery-->

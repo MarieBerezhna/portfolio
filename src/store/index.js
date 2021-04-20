@@ -201,7 +201,7 @@ export default new Vuex.Store({
       {
         id: 1,
         name: 'Tomatick',
-        url: 'https://tomatick.webmarie.com',
+        url: '/tomatick/',
         img: 'tomatick.jpg',
         description: 'Pomodoro clock',
         tags: []

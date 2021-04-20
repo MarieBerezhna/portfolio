@@ -1,0 +1,7 @@
+style.css
+package.json
+package-lock.json
+gulpfile.js
+modernizr-webp.js
+dist/functions.js
+node_modules

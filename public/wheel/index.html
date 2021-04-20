@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Wheel Of Fortune">
+    <meta name="description"
+        content="This is a fortune wheel game frontend page, made as a project for my portfolio. Webmarie.com">
+    <title>Wheel Of Fortune </title>
+    <link rel="stylesheet" href="dist/styles.min.css">
+</head>
+<body>
+    <div class="outer container">
+
+    <h1>SPIN THE WHEEL AND COLLECT YOUR REWARD</h1>
+    <p class="description text-center px-3">
+        This is just a portfolio project. No one is gonna bring you an iPhone, I myself don't have one.
+    </p>
+    <div class="attempts">
+        <p class="" >
+            <span id="count">3</span><br>
+            ATTEMPTS
+        </p>
+    </div>
+
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <picture>
+        <source  srcset="./dist/webp/newpin.webp" type="image/webp">
+        <img id="pin" src="./img/newpin.png" alt="pin for the wheel"></img>
+      </picture>
+
+    <div id="button">CLAIM YOUR PRIZE</div>
+
+
+
+    <script src="dist/functions-min.js"></script>
+</div>
+</body>
+
+</html>

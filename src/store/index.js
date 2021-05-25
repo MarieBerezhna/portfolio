@@ -193,7 +193,7 @@ export default new Vuex.Store({
         {
         id: 0,
         name: 'Eli`s Pub',
-        url: '/elispub/index.php',
+        url: '/elispub/',
         img: 'elispub.jpg',
         description: 'Local Live Music Pub',
         tags: []

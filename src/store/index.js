@@ -235,21 +235,9 @@ export default new Vuex.Store({
         url: 'https://raffle.allstars-it.com',
         img: 'raffle.jpg',
         description: `Fullstack project (Node.js, ejs, Postgres). 
-        The landing page collects data leaved by applicants and stores it to a dababase, from where 
-        it can be retrieved by admins`,
+        Landing page for an HR campaign.`,
         tags: []
       },
-      // {
-      //   id: 6,
-      //   name: 'Recmap',
-      //   url: 'https://recmap.webmarie.com',
-      //   img: 'recmap.jpg',
-      //   description: `Fullstack project (Node.js, ejs, Postgres, Mapbox GL JS). 
-      //   Ongoing pet-project: an interactive map for those who care about environment. 
-      //   The idea is to enable users report trash bins' locations in their city as well as report that the bin is missing.
-      //   I'm planning to gamify the experience and automate addition and deletion of the bins based on rating given by users.`,
-      //   tags: []
-      // },
     ],
     footerlinks: [{
         id: 0,

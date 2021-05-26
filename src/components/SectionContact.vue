@@ -6,7 +6,8 @@
                 <div class="row mx-auto ">
                     <div class="col-12 col-md-5"
                         :style="'background-color: '+ this.$store.state.secondary_color">
-                        <form id="contactform" action="/contact.php" method="POST" class="my-4 pt-md-4 mx-auto text-center">
+                        <form id="contactform" action="#"
+                         method="POST" class="my-4 pt-md-4 mx-auto text-center">
                             <div class="form-group"> 
                                  <label for="name" class=" w-100 col-form-label">
                                 <input id="name" name="name" type="text" placeholder="Your name"
@@ -106,29 +107,19 @@
                     $('#email').val('');
                     $('#message').val('');
                     $("input").css("box-shadow", "none");
-
-                    if (window.location.host.indexOf('localhost') !== -1) {
-
-                        this.showModal('Message sent!',
-                            '<h4 class="pt-1">Thank you, ' + name +
-                            '. The message was successfully sent.</h4><hr>')
-                    } else {
                         const app = this;
-                        $.post("/contact.php", {
+                        $.post("http://localhost:3000/portfolio-contact", {
                                 name: name,
                                 email: email,
                                 message: message
                             },
                             function (data) {
+                                console.log(data)
                                 app.showModal('Message sent!', data)
                             });
-                    }
                 } else {
                     $('input').blur()
                 }
-
-
-
 
                 return false;
             },

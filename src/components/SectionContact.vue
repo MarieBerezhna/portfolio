@@ -108,7 +108,7 @@
                     $('#message').val('');
                     $("input").css("box-shadow", "none");
                         const app = this;
-                        $.post("http://localhost:3000/portfolio-contact", {
+                        $.post("https://api.webmarie.co.il/portfolio-contact", {
                                 name: name,
                                 email: email,
                                 message: message

@@ -45,7 +45,39 @@
         },
         data () {
             return {
-                projects: this.$store.state.projects.reverse()
+                projects: [
+                    {
+                    id: 1,
+                    name: 'Tomatick',
+                    url: '/tomatick/',
+                    img: 'tomatick.jpg',
+                    description: 'Pomodoro clock',
+                    tags: []
+                    },
+                    {
+                    id: 2,
+                    name: 'Wheel Of Fortune',
+                    url: '/wheel/',
+                    img: 'wheel.jpg',
+                    description: 'Spinner game with HTML5 Canvas',
+                    tags: []
+                    },
+                    {
+                    id: 3,
+                    name: 'DK Therapy',
+                    url: 'https://dktherapy.co.il/',
+                    img: 'dktherapy.jpg',
+                    description: 'Massage Home Studio'
+                    },
+                    {
+                    id: 4,
+                    name: 'Polina Poliakova',
+                    url: 'https://polinapoliakova.com',
+                    img: 'polina.jpg',
+                    description: 'Digital Artist Intro',
+                    tags: []
+                    },
+                ],
             }
         },
         methods: {
@@ -82,7 +114,7 @@
                 const tIdx = $(e.target).attr('item')
                 let dist = $('.project').width()
                 dist = dist * Math.abs(tIdx - cIdx)
-                let direction = tIdx > cIdx ? '+=' : '-='
+                let direction = tIdx > cIdx ? '-=' : '+='
                 $('.project').animate({
                     left: direction + dist
                 },100)
@@ -107,6 +139,7 @@
         mounted() {
             this.setStyles()
             this.activeDots()
+            $($('.dot')[0]).addClass('active')
         }
     }
 </script>

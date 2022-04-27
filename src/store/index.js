@@ -177,14 +177,6 @@ const state = {
       url: 'https://www.linkedin.com/in/webmarie/'
     },
     {
-      name: 'whatsapp',
-      url: 'https://wa.me/972528316545'
-    },
-    {
-      name: 'instagram',
-      url: 'https://www.instagram.com/webmariehosting/'
-    },
-    {
       name: 'github',
       url: 'https://github.com/MarieBerezhna'
     }

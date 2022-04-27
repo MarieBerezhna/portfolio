@@ -5,7 +5,7 @@
                 <div class="row mx-auto ">
                     <div class="col-md-6 col-12 order-md-2 ">
                         <ul>
-                            <li v-for="link in this.$store.state.footerlinks" :key="link.id">
+                            <li v-for="link in this.links" :key="link.id">
                                 <MenuLink :name="link.name" :code="link.code" @click.native="goModal($event)" />
                             </li>
                         </ul>
@@ -29,6 +29,29 @@
     import $ from 'jquery'
     export default {
         name: 'MainFooter',
+        data () {
+            return {
+                links: [{
+                    id: 0,
+                    name: 'Terms of use & Privacy',
+                    code: 'tos',
+                    content: `The only information I collect on this webpage is your name
+                        and your email, when you make an enquiery with a contact form. 
+                        The only use of that information for me is to get back to you with answers, 
+                        I don't pass it to any third parties.`
+                    },
+                    {
+                    id: 1,
+                    name: 'Credits',
+                    code: 'credits',
+                    content: `<div>Homepage icons made by <a href="https://www.flaticon.local/authors/freepik" title="Freepik">
+                        Freepik</a> from <a href="https://www.flaticon.local/" title="Flaticon">www.flaticon.local</a></div>
+                        <div>Design inspirations : <a href='https://gentium.pixerex.com/wp/'>Gentium</a></div>
+                        <div>Cool particles animation: <a href='https://codepen.io/natewiley/pen/GgONKy'>Nate Wiley</a></div>`
+                    }
+                ]
+            }
+        },
         components: {
             MenuLink: () => import('@/components/utils/MenuLink.vue'),
             ModalWindow: () => import('@/components/utils/ModalWindow.vue')

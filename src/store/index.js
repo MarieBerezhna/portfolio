@@ -32,66 +32,6 @@ Vue.use(Helper);
 const state = {
   primary_color: '#5BFFAA',
   secondary_color: '#3B3B3B',
-  coreskills: {
-    markup_and_layout: [{
-        name: 'HTML',
-      },
-      {
-        name: 'CSS',
-      },
-      {
-        name: 'Bootstrap',
-      },
-      {
-        name: 'SASS',
-      }
-    ],
-    client_and_server_side: [{
-        name: 'JS'
-      },
-      {
-        name: 'jQuery',
-      },
-      {
-        name: 'Vue.js',
-      },
-      {
-        name: 'Node.js',
-      }
-    ],
-    vcs_and_data_bases: [{
-        name: 'Git',
-      },
-      {
-        name: 'GitHub',
-      },
-      {
-        name: 'MySQL',
-      },
-      {
-        name: 'Postgres',
-      }
-    ]
-  },
-  extraskills: [{
-      text: `Competent at working with design prototypes made in Figma and AdobeXD and
-              capable of getting along with other design tools. 
-              Have an eye for good design and following best practicies.`
-    },
-    {
-      text: `Knowledgeable about mobile-first development strategy, SEO, 
-              and perfomance optimization main principles.`
-    },
-    {
-      text: `Acquanted with Wordpress, cPanel interface and Linux environment.
-              Not afraid of command line and dealing with server issues.`
-
-    },
-    {
-      text: `Speaking English, Hebrew, Russian and Ukrainian. 
-                Currently obsessed with learning Afrikaans.`
-    }
-  ],
   social_icons: [{
       name: 'facebook-f',
       url: 'https://www.facebook.com/WebMarieCreative'

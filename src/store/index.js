@@ -141,7 +141,7 @@ const state = {
         icon: ''
       },
       {
-        id: 2,
+        id: 3,
         name: 'Postgres',
         icon: ''
       }

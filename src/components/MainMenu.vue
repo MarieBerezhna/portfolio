@@ -18,7 +18,7 @@
             </div>
             <ul>
                 <li v-for="(sec, i) in sections" :key="i" class="nav-link">
-                    <MenuLink :name="sec.name.toUpperCase()" :href="'#' + sec.name.toLowerCase()"
+                    <MenuLink :name="sec.toUpperCase()" :href="'#' + sec.toLowerCase()"
                         :class="{active: i === 0}" />
                 </li>
             </ul>
@@ -33,9 +33,14 @@
         components: {
             MenuLink: () => import('@/components/utils/MenuLink.vue')
         },
-        props: {
-            sections: Array
+        data () {
+            return {
+                sections: ['Home', 'Skills', 'Projects', 'Contact']
+            }
         },
+        // props: {
+        //     sections: Array
+        // },
         methods: {
             menuToggle: function () {
                 $('.close').on('click', () => {

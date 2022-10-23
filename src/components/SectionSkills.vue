@@ -30,7 +30,7 @@
                 :style="'background-color:' + $store.state.primary_color + 
                 '; border: 5px solid '+ $store.state.secondary_color +
                 '; text-align:left; color: black; font-size: 1.2rem'">
-                  {{ item.text}}
+                  {{ item.text }}
 
                 </div>
           </div>

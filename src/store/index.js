@@ -32,19 +32,6 @@ Vue.use(Helper);
 const state = {
   primary_color: '#5BFFAA',
   secondary_color: '#3B3B3B',
-  sections: [{
-      name: 'Home'
-    },
-    {
-      name: 'Skills'
-    },
-    {
-      name: 'Projects'
-    },
-    {
-      name: 'Contact'
-    }
-  ],
   coreskills: {
     markup_and_layout: [{
         name: 'HTML',

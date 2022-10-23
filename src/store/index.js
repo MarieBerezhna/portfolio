@@ -29,6 +29,8 @@ const Helper = {
 };
 Vue.use(Helper);
 
+const exp = new Date().getFullYear() - 2018;
+
 const state = {
   primary_color: '#5BFFAA',
   secondary_color: '#3B3B3B',
@@ -53,7 +55,7 @@ const state = {
       id: 0,
       title: 'Creative Mindset',
       icon: 'puzzle.png',
-      content: `2+ years of experience in web development with a strong focus on front-end web applications,
+      content: `${exp}+ years of experience in web development with a strong focus on front-end web applications,
           striving for responsive websites and user-friendly interfaces.
           Trying out different styles and creating my own, 
           as a naturally wondering creature, I like to play with things and see what happens.`,

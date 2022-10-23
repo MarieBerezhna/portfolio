@@ -4,7 +4,7 @@
             <MainHeading text="Projects" />
             <div class="container-fluid mt-3 p-0">
                 <div class="row projects-wrapper">
-                    <div class="project position-relative" v-for="project in projects" :key="project.id"
+                    <div class="project position-relative" v-for="(project, i) in projects" :key="i"
                         :id="project.id"
                         :style="'background-image: url(' + require('../assets/projects/' + project.img)">
                         <div class="cover position-relative text-center">

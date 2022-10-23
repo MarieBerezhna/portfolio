@@ -17,9 +17,9 @@
                 </button>
             </div>
             <ul>
-                <li v-for="sec in sections" :key="sec.id" class="nav-link">
+                <li v-for="(sec, i) in sections" :key="i" class="nav-link">
                     <MenuLink :name="sec.name.toUpperCase()" :href="'#' + sec.name.toLowerCase()"
-                        :class="{active: sec.id === 0}" />
+                        :class="{active: i === 0}" />
                 </li>
             </ul>
         </nav>

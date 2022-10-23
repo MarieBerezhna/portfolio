@@ -35,24 +35,19 @@ const state = {
   primary_color: '#5BFFAA',
   secondary_color: '#3B3B3B',
   sections: [{
-      id: 0,
       name: 'Home'
     },
     {
-      id: 1,
       name: 'Skills'
     },
     {
-      id: 2,
       name: 'Projects'
     },
     {
-      id: 3,
       name: 'Contact'
     }
   ],
   boxes: [{
-      id: 0,
       title: 'Creative Mindset',
       icon: 'puzzle.png',
       content: `${exp}+ years of experience in web development with a strong focus on front-end web applications,
@@ -62,7 +57,6 @@ const state = {
       highlighted: true
     },
     {
-      id: 1,
       title: 'Forever Student',
       icon: 'learning.png',
       content: `Passionate about solving challenging problems, 
@@ -72,7 +66,6 @@ const state = {
         `
     },
     {
-      id: 2,
       title: 'Team Player',
       icon: 'teamwork.png',
       content: `Communication skills are vital nowadays.
@@ -85,87 +78,60 @@ const state = {
   ],
   coreskills: {
     markup_and_layout: [{
-        id: 0,
         name: 'HTML',
-        icon: ''
       },
       {
-        id: 1,
         name: 'CSS',
-        icon: ''
       },
       {
-        id: 2,
         name: 'Bootstrap',
-        icon: ''
       },
       {
-        id: 3,
         name: 'SASS',
-        icon: ''
       }
     ],
     client_and_server_side: [{
-        id: 0,
         name: 'JS'
       },
       {
-        id: 1,
         name: 'jQuery',
-        icon: ''
       },
       {
-        id: 2,
         name: 'Vue.js',
-        icon: ''
       },
       {
-        id: 3,
         name: 'Node.js',
-        icon: ''
       }
     ],
     vcs_and_data_bases: [{
-        id: 0,
         name: 'Git',
-        icon: ''
       },
       {
-        id: 1,
         name: 'GitHub',
-        icon: ''
       },
       {
-        id: 2,
         name: 'MySQL',
-        icon: ''
       },
       {
-        id: 3,
         name: 'Postgres',
-        icon: ''
       }
     ]
   },
   extraskills: [{
-      id: 0,
       text: `Competent at working with design prototypes made in Figma and AdobeXD and
               capable of getting along with other design tools. 
               Have an eye for good design and following best practicies.`
     },
     {
-      id: 1,
       text: `Knowledgeable about mobile-first development strategy, SEO, 
               and perfomance optimization main principles.`
     },
     {
-      id: 2,
       text: `Acquanted with Wordpress, cPanel interface and Linux environment.
               Not afraid of command line and dealing with server issues.`
 
     },
     {
-      id: 3,
       text: `Speaking English, Hebrew, Russian and Ukrainian. 
                 Currently obsessed with learning Afrikaans.`
     }

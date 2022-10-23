@@ -12,7 +12,7 @@
               {{ key.toUpperCase().split('_').join(' ') }}
             </h3>
             <div class="row">
-              <div v-for="skill in skillset" :key="skill.id" 
+              <div v-for="(skill, i) in skillset" :key="i" 
               class="col-6 col-md-3 skill text-center hideme mx-auto mx-md-0">
                 <img width="50" height="50"
                 :src="require('../assets/png/skills/' + skill.name.toLowerCase() + '.png')" 
@@ -26,7 +26,7 @@
             <div class="col-12 col-md-6 py-4 text-center">
                 <h4 style="font-weight: 400;font-family: 'AvantGarde Bold', Sans-serif;">I'm also:</h4>
                 
-                <div class="skillbox p-4 my-3" v-for="item in this.$store.state.extraskills" :key="item.id"
+                <div class="skillbox p-4 my-3" v-for="(item, i) in this.$store.state.extraskills" :key="i"
                 :style="'background-color:' + $store.state.primary_color + 
                 '; border: 5px solid '+ $store.state.secondary_color +
                 '; text-align:left; color: black; font-size: 1.2rem'">

@@ -23,7 +23,7 @@
       <div class="container-fluid  d-flex justify-content-end">
         <div class="row col-md-10">
 
-          <div v-for="box in this.$store.state.boxes" :key="box.id" 
+          <div v-for="(box, i) in this.$store.state.boxes" :key="i" 
           class="infobox-outer col-12 col-md-4 my-5 my-md-1"
           :class="[ window.innerWidth < 992 && box.highlighted ? 'margin-box-mob' : 'that']">
             <div class="infobox text-center mb-5" @mouseenter="boxHover" @mouseleave="boxHover"

@@ -29,8 +29,6 @@ const Helper = {
 };
 Vue.use(Helper);
 
-const exp = new Date().getFullYear() - 2018;
-
 const state = {
   primary_color: '#5BFFAA',
   secondary_color: '#3B3B3B',
@@ -45,35 +43,6 @@ const state = {
     },
     {
       name: 'Contact'
-    }
-  ],
-  boxes: [{
-      title: 'Creative Mindset',
-      icon: 'puzzle.png',
-      content: `${exp}+ years of experience in web development with a strong focus on front-end web applications,
-          striving for responsive websites and user-friendly interfaces.
-          Trying out different styles and creating my own, 
-          as a naturally wondering creature, I like to play with things and see what happens.`,
-      highlighted: true
-    },
-    {
-      title: 'Forever Student',
-      icon: 'learning.png',
-      content: `Passionate about solving challenging problems, 
-        gaining knowledge and mastering  skills as technological tendencies evolve. 
-        Exploring new things is an essential need for a healthy human consciousness, if you ask me.
-        Shortly speaking, Google and Stackoverflow are my besties ;)
-        `
-    },
-    {
-      title: 'Team Player',
-      icon: 'teamwork.png',
-      content: `Communication skills are vital nowadays.
-        While most of my jobs are freelance projects, 
-        I did work in a startup team for a while, and will gladly do it again.
-        This experience taught me that we can achieve much more than we think, 
-        when we know how to communicate clearly.
-        `
     }
   ],
   coreskills: {

@@ -23,7 +23,7 @@
       <div class="container-fluid  d-flex justify-content-end">
         <div class="row col-md-10">
 
-          <div v-for="(box, i) in this.$store.state.boxes" :key="i" 
+          <div v-for="(box, i) in boxes" :key="i" 
           class="infobox-outer col-12 col-md-4 my-5 my-md-1"
           :class="[ window.innerWidth < 992 && box.highlighted ? 'margin-box-mob' : 'that']">
             <div class="infobox text-center mb-5" @mouseenter="boxHover" @mouseleave="boxHover"
@@ -50,6 +50,39 @@
     components: {
       MainButton: () => import('@/components/utils/MainButton.vue'),
       ParticlesBall: () => import('@/components/art/ParticlesBall.vue')
+    },
+    data () {
+      return {
+        boxes: [{
+            title: 'Creative Mindset',
+            icon: 'puzzle.png',
+            content: `${new Date().getFullYear() - 2018}+ years of experience in web development with a strong focus on front-end web applications,
+                striving for responsive websites and user-friendly interfaces.
+                Trying out different styles and creating my own, 
+                as a naturally wondering creature, I like to play with things and see what happens.`,
+            highlighted: true
+          },
+          {
+            title: 'Forever Student',
+            icon: 'learning.png',
+            content: `Passionate about solving challenging problems, 
+              gaining knowledge and mastering  skills as technological tendencies evolve. 
+              Exploring new things is an essential need for a healthy human consciousness, if you ask me.
+              Shortly speaking, Google and Stackoverflow are my besties ;)
+              `
+          },
+          {
+            title: 'Team Player',
+            icon: 'teamwork.png',
+            content: `Communication skills are vital nowadays.
+              While most of my jobs are freelance projects, 
+              I did work in a startup team for a while, and will gladly do it again.
+              This experience taught me that we can achieve much more than we think, 
+              when we know how to communicate clearly.
+              `
+          }
+        ],
+      }
     },
     methods: {
       boxHover(e) {

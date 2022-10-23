@@ -86,8 +86,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+#home {
+  min-height: 800px;
+}
   #profile-image {
     padding-left: 0;
+    min-height: 700px;
     height: 85vh;
     width: 100%;
     background-image: url(../assets/grey.jpg);

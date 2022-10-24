@@ -82,7 +82,6 @@
             -webkit-transition: all 0.5s ease-in;
             font-weight: 600;
         }
-
         &:hover {
             background-size: 120%;
 
@@ -129,7 +128,7 @@
             width: 33%;
             height: 25vw;
             &:hover .content .p-heading {
-                font-size: 3rem !important;
+                font-size: 2rem !important;
             }
         }
     }

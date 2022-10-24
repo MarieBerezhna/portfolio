@@ -2,10 +2,9 @@
     <div>
         <section id="projects" class="my-1 pt-4">
             <MainHeading text="Projects" />
-            <div class="container-fluid mt-3 p-0">
+            <div class="container mt-3 p-0">
                 <div class="row projects-wrapper">
                     <div class="project position-relative" v-for="(project, i) in projects" :key="i"
-                        :id="project.id"
                         :style="'background-image: url(' + require('../assets/projects/' + project.img)">
                         <div class="cover position-relative text-center">
                             <div class="content w-50 mx-auto">
@@ -36,35 +35,22 @@
             return {
                 projects: [
                     {
-                    id: 1,
-                    name: 'Tomatick',
-                    url: '/tomatick/',
-                    img: 'tomatick.jpg',
-                    description: 'Pomodoro clock',
-                    tags: []
+                        name: 'Tomatick',
+                        url: '/tomatick/',
+                        img: 'tomatick.jpg',
+                        description: 'Pomodoro clock',
                     },
                     {
-                    id: 2,
-                    name: 'Wheel Of Fortune',
-                    url: '/wheel/',
-                    img: 'wheel.jpg',
-                    description: 'Spinner game with HTML5 Canvas',
-                    tags: []
+                        name: 'Wheel Of Fortune',
+                        url: '/wheel/',
+                        img: 'wheel.jpg',
+                        description: 'Spinner game HTML5 Canvas',
                     },
                     {
-                    id: 3,
-                    name: 'DK Therapy',
-                    url: 'https://dktherapy.co.il/',
-                    img: 'dktherapy.jpg',
-                    description: 'Massage Home Studio'
-                    },
-                    {
-                    id: 4,
-                    name: 'Polina Poliakova',
-                    url: 'https://polinapoliakova.com',
-                    img: 'polina.jpg',
-                    description: 'Digital Artist Intro',
-                    tags: []
+                        name: 'Polina Poliakova',
+                        url: 'https://polinapoliakova.com',
+                        img: 'polina.jpg',
+                        description: 'Digital Artist Intro',
                     },
                 ],
             }
@@ -73,15 +59,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .dot {
-        display: inline-block;
-        margin-left: 10px;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
     .project {
         padding: 0 !important;
         height: 100vw;
@@ -146,16 +123,11 @@
         }
     }
 
-    .dot-wrapper {
-        margin-top: 33vw;
-        text-align: center;
-    }
-
     @media (min-width: 992px) {
 
         .project {
-            width: 33vw;
-            height: 33vw;
+            width: 33%;
+            height: 25vw;
             &:hover .content .p-heading {
                 font-size: 3rem !important;
             }
